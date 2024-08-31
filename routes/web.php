@@ -6,6 +6,7 @@ use App\Http\Controllers\Member\BusinessController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PhoneController;
 use App\Http\Controllers\Admin\EmailController;
+use App\Http\Controllers\Admin\SupportAppliactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,12 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
         Route::resource('job', App\Http\Controllers\Admin\JobController::class);
         Route::resource('job-seeker', App\Http\Controllers\Admin\JobSeekerController::class);
         Route::resource('fees', App\Http\Controllers\Admin\FeesController::class);
+        Route::resource('donation', App\Http\Controllers\Admin\DonationController::class);
+        Route::resource('donationtype', App\Http\Controllers\Admin\DonationTypeController::class);
+        Route::resource('supportapplication', App\Http\Controllers\Admin\SupportApplicationController::class);
+        Route::post('carousel/multi-store-support' , [SupportApplicationController::class , 'multiStoresupport'])->name('multiStore.support');
+        Route::post('delete-gallery-image/{galleryId}', [SupportApplicationController::class , 'deleteImage'])->name('deleteImage');
+        Route::post('/update-is-main', [SupportApplicationController::class , 'updateIsMain'])->name('updateIsMain');
+    
     });
 });

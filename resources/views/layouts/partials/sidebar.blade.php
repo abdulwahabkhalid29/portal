@@ -230,6 +230,94 @@
 
                 </li>
 
+                <li class="nav-item">
+
+                    <a class="nav-link menu-link" href="#sidebarApps4" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps4">
+
+                        <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Donations</span>
+
+                    </a>
+
+                    <div class="collapse menu-dropdown" id="sidebarApps4">
+
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+
+                                <a href="{{ route('admin.donation.index') }}" class="nav-link" data-key="t-calendar"> View All </a>
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a href="{{ route('admin.donation.create') }}" class="nav-link" data-key="t-calendar"> Create </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link menu-link" href="#sidebarApps11" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps11">
+
+                        <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Donation Types</span>
+
+                    </a>
+
+                    <div class="collapse menu-dropdown" id="sidebarApps11">
+
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+
+                                <a href="{{ route('admin.donationtype.index') }}" class="nav-link" data-key="t-calendar"> View All </a>
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <a href="{{ route('admin.donationtype.create') }}" class="nav-link" data-key="t-calendar"> Create </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link menu-link" href="#sidebarApps12" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps12">
+
+                        <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Support Applications</span>
+
+                    </a>
+
+                    <div class="collapse menu-dropdown" id="sidebarApps12">
+
+                        <ul class="nav nav-sm flex-column">
+
+                            <li class="nav-item">
+
+                                <a href="{{ route('admin.supportapplication.index') }}" class="nav-link" data-key="t-calendar"> View All </a>
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                {{-- <a href="{{ route('admin.supprtapp.create') }}" class="nav-link" data-key="t-calendar"> Create </a> --}}
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </li>
+
 
 
             </ul>

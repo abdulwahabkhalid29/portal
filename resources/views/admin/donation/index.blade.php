@@ -15,14 +15,14 @@
     <div class="card-header">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="">Jobs</h2>
+                <h2 class="">Donation</h2>
 
             </div>
             <div class="col-md-6">
                 <div class="row g-4 " style="float: right">
                     <div class="col-sm-auto">
                         <div>
-                            <a href="{{ route('admin.job.create') }}" ><button type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
+                            <a href="{{route('admin.donation.create')}}" ><button type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
                         </div>
                     </div>
                 </div>
@@ -36,28 +36,24 @@
                     <thead  style=" background-color:#45cb85;  color:white;">
                         <tr>
                             <th class="text-center">No.</th>
-                            <th data-sort="name">Job Title</th>
-                            <th data-sort="email">Job Type</th>
-                            <th data-sort="phone">Job Shift</th>
-                            <th class="text-center" data-sort="phone">Salary</th>
-                            <th data-sort="phone">Posted at</th>
+                            <th data-sort="name">Donation Id</th>
+                            <th data-sort="name">Member Id</th>
+                            <th class="text-center" data-sort="email">Amount</th>
                             <th data-sort="phone">Action</th>
                            
                         </tr>
                     </thead>
                     <tbody class="list form-check-all ">
-                        @foreach ($jobs as $index=>$job)
+                        @foreach ($donations as $index=>$donation)
                             <tr>
-                    `            <td class="text-center">{{ ++$index}}</td>
-                                <td class="mt-5">{{ $job->title }}</td>
-                                <td class="mt-5">{{ $job->type }}</td>
-                                <td class="mt-5">{{ $job->shift }}</td>
-                                <td class="text-center mt-5">{{ $job->salary }}</td>
-                                <td class="mt-5">{{ $job->created_at->diffForhumans() }}</td>
+                                <td class="text-center">{{ ++$index}}</td>
+                                <td >{{ $donation->donation->name }}</td>
+                                <td >{{ $donation->member->name }}</td>
+                                <td class="mt-5 text-center">{{ $donation->amount }}</td>
                                 <td class="mt-5">
-                                  <a href="{{ route('admin.job.edit',$job->id) }}" class="text-success  p-1"><i class="fa fa-edit"> Edit</i></a>&nbsp;|&nbsp;
-                                  {{-- <a href="{{ route('admin.job.destroy',$job->id) }}" class="text-danger p-1"><i class="fa fa-trash"> Delete</i></a> --}}
-                                  <button class="delete-job" data-id="{{ $job->id }}"
+                                  <a href="{{ route('admin.donation.edit',$donation->id) }}" class="text-success  p-1"><i class="fa fa-edit"> Edit</i></a>&nbsp;|&nbsp;
+                                  {{-- <a href="{{ route('admin.donation.destroy',$donation->id) }}" class="text-danger p-1"><i class="fa fa-trash"> Delete</i></a> --}}
+                                  <button class="delete-donation" data-id="{{ $donation->id }}"
                                     style="border: none; background-color: transparent;"><i
                                         class="pointer-cursor fa fa-trash text-danger"> Delete</i> </button>
                                 </td>
@@ -100,8 +96,8 @@ $(document).ready( function () {
     $('#myTable').DataTable();
 } );
 $(document).ready(function() {
-            $('.delete-job').click(function() {
-                var jobId = $(this).data('id');
+            $('.delete-donation').click(function() {
+                var donationId = $(this).data('id');
                 swal({
                         title: "Are you sure?",
                         text: "You want to delete this Job?",
@@ -112,7 +108,7 @@ $(document).ready(function() {
                     .then((willDelete) => {
                         if (willDelete) {
                             $.ajax({
-                                url: "{{ route('admin.job.destroy', '') }}/" + jobId,
+                                url: "{{ route('admin.donation.destroy', '') }}/" + donationId,
                                 type: "DELETE",
                                 data: {
                                     _token: "{{ csrf_token() }}",
@@ -120,7 +116,7 @@ $(document).ready(function() {
                                 success: function(response) {
                                     if (response.status == 'success') {
                                         swal("Deleted!", response.message, "success");
-                                        $('.job-item-' + jobId).remove();
+                                        $('.donation-item-' + donationId).remove();
                                     } else {
                                         swal("Error!", response.message, "error");
                                     }
