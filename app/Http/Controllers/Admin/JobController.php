@@ -38,14 +38,14 @@ class JobController extends Controller
         $job->shift = $request->shift;
         $job->created_by = auth()->user()->id;
         $job->save();
-        return redirect()->route('admin.job.index');
+        return redirect()->route('admin.job.index')->with('success' , 'Job Created Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
 
-        if(!empty($store->id)){
-            return redirect()->route('admin.job.index')->with('success','Job Created');
-        }
-        else{
-            return redirect()->route('admin.job.create')->with('error','Something Went Wrong');
-        }
+        // if(!empty($store->id)){
+        //     return redirect()->route('admin.job.index')->with('success' , 'Job Created Successfully!');
+        // }else{
+        //     return redirect()->back()->with('error' , 'Something went wrong');
+        // }
     }
 
     /**
@@ -77,7 +77,9 @@ class JobController extends Controller
         $job->salary = $request->salary;
         $job->shift = $request->shift;
         $job->update();
-        return redirect()->route('admin.job.index');
+        return redirect()->route('admin.job.index')->with('success' , 'Job Updated Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
+
     }
 
     /**

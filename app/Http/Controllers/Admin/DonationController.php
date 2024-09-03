@@ -29,14 +29,8 @@ class DonationController extends Controller
         $donation->amount = $request->amount;
         $donation->member_id = $request->member_id;
         $donation->save();
-        return redirect()->route('admin.donation.index');
-
-        if(!empty($store->id)){
-            return redirect()->route('admin.donation.index')->with('success','Donation Created');
-        }
-        else{
-            return redirect()->route('admin.donation.create')->with('error','Something Went Wrong');
-        }
+        return redirect()->route('admin.donation.index')->with('success' , 'Donation Created Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
     }
 
     /**
@@ -68,7 +62,8 @@ class DonationController extends Controller
         $donation->amount = $request->amount;
         $donation->member_id = $request->member_id;
         $donation->update();
-        return redirect()->route('admin.donation.index');
+        return redirect()->route('admin.donation.index')->with('success' , 'Donation Updated Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
     }
 
     /**

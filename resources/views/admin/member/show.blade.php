@@ -5,7 +5,7 @@
             <h3 class="fw-bold mb-4">Membership Form</h3>
             <form action="javascript:void(0)">
                 <div class="row">
-                    
+
 
                     <div class="card" id="contact-view-detail">
                         <div class="card-body">
@@ -68,7 +68,7 @@
                                             <td class="fw-medium" scope="row"><hr></td>
                                             <td><hr></td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td class="fw-medium" scope="row">Form Recieved By :</td>
                                             <td>{{ $user->received_by }}</td>
@@ -116,7 +116,7 @@
                     <p class="fw-bold h4">Annual Membership Fee History: </p>
                      @foreach ($member_information as $key => $fee)
                    <div class="col-12 d-flex">
-                    
+
                     {{ $key+1 }}. <div class="form-check mx-2">
                         <input class="form-check-input" name="fees{{ $key }}" value="1200" type="radio" checked>
                         <label class="form-check-label" for="gridCheck">
@@ -125,8 +125,8 @@
                     </div>
 
                    </div>
-                
-                  
+
+
 
                     <p class="fw-bold mt-4">Payment Mode</p>
                     <div class="col-12 d-flex">
@@ -183,7 +183,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div><!--end row-->
             </form>
         </div>

@@ -17,63 +17,126 @@ class SupportApplicationController extends Controller
     public function create()
     {
         return view('admin.supportapp.create');
-    }   
-    public function store(Request $request)
-    {
-        $support_applications = new SupportApplication();
-        $support_applications->title = $request->title;
-        $support_applications->description = $request->description;
-        if($request->has('image')){
-            foreach($request->file('image') as $index=>$image){
-                $imageName = 'support' . '-' . time() .'-'.rand(1000,100). '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('upload/support'),$imageName);
-                $support_applications->image = $imageName;
+    }
+    public function store(Request $request){
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+
+        ]);
+        $store = SupportApplication::create([
+            'title' => $request->title,
+            'description' => $request->description,
+
+        ]);
+
+        if($request->has('images')){
+            $isFirstImage = true;
+            foreach($request->file('images') as $index=>$image){
+                $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
+                $image->move(public_path('storage/product/'),$imageName);
+                $isMain = $isFirstImage? 1 : 0;
+                Gallery::create([
+                    'support_application_id' => $store->id,
+                    'images' => $imageName,
+                ]);
+                $isFirstImage = false;
             }
         }
-        $support_applications->save();
-        return redirect()->route('admin.supportapplication.index');
 
         if(!empty($store->id)){
-            return redirect()->route('admin.supportapp.index')->with('success','Support Application Created');
+            return redirect()->route('admin.supportapplication.index')->with('success' , 'Support Application Created Successfully!');
+        }else{
+            return redirect()->back()->with('error' , 'Something went wrong');
         }
-        else{
-            return redirect()->route('admin.supportapp.create')->with('error','Something Went Wrong');
+    }
+        public function multiStoreProduct(Request $request){
+        $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+
+        ]);
+        $store = SupportApplication::create([
+            'title' => $request->title,
+            'description' => $request->description,
+
+        ]);
+
+        if($request->has('images')){
+            $isFirstImage = true;
+            foreach($request->file('images') as $index=>$image){
+                $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
+                $image->move(public_path('storage/product/'),$imageName);
+                $isMain = $isFirstImage? 1 : 0;
+                Gallery::create([
+                    'support_application_id' => $store->id,
+                    'images' => $imageName,
+                ]);
+                $isFirstImage = false;
+            }
         }
-    } 
-    
+
+        if(!empty($store->id)){
+            return response()->json(['success' => true ]);
+        }else{
+            return response()->json(['success' => false ]);
+        }
+    }
     public function edit(string $id)
     {
         $support_application = SupportApplication::find($id);
-        return view('admin.supportapp.edit',compact('support_application'));
+        $galleries = Gallery::where('support_application_id',$id)->get();
+        return view('admin.supportapp.edit',compact('support_application','galleries'));
     }
+public function deleteImage($galleryId)
+{
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $support_application = SupportApplication::find($id);
-        $support_application->title = $request->title;
-        $support_application->description = $request->description;
-        if($request->has('image')){
-            foreach($request->file('image') as $index=>$image){
-                $imageName = 'support' . '-' . time() .'-'.rand(1000,100). '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('upload/support'),$imageName);
-                Gallery::create([
-                    'support_id' => $support->id,
-                    'image' => $imageName,
-                    'is_main' => $index==1 ? 1 : 0,
-                ]);
-            }
+  $gallery = Gallery::find($galleryId);
+
+  if ($gallery->image && file_exists(public_path('storage/product/'. $gallery->image))) {
+    unlink(public_path('storage/product/'. $gallery->image));
+}
+  if ($gallery) {
+
+
+    $gallery->delete();
+    return response()->json(['success' => true]);
+  } else {
+    return response()->json(['error' => 'Gallery not found'], 404);
+  }
+}
+public function update(Request $request, $id){
+    $request->validate([
+        'title' => 'required|max:255',
+        'description' => 'required|max:8000',
+    ]);
+    $supportApplication = SupportApplication::where('id', $id)->first();
+    $update = $supportApplication->update([
+        'title' => $request->title,
+        'description' => $request->description,
+    ]);
+
+    if($request->has('images')){
+        $isFirstImage = true;
+        foreach($request->file('images') as $index=>$image){
+            $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
+            $image->move(public_path('storage/product/'),$imageName);
+            $isMain = $isFirstImage? 1 : 0;
+            Gallery::create([
+                'support_application_id' => $supportApplication->id,
+                'images' => $imageName,
+            ]);
+            $isFirstImage = false;
         }
-        $support_application->update();
-        return redirect()->route('admin.supportapplication.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id){
+    if($update > 0){
+        return redirect()->route('admin.supportapplication.index')->with('success' , 'Support Application Updated Successfully!');
+    }else{
+        return redirect()->back()->with('error' , 'Something went wrong');
+    }
+}
+public function destroy($id){
         $support_application = SupportApplication::where('id',$id)->firstorfail();
         $delete = SupportApplication::where('id', $id)->delete();
         if (!empty($delete)) {

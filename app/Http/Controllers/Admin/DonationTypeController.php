@@ -24,14 +24,8 @@ class DonationTypeController extends Controller
         $donation_type->name = $request->name;
         $donation_type->slug = $request->slug;
         $donation_type->save();
-        return redirect()->route('admin.donationtype.index');
-
-        if(!empty($store->id)){
-            return redirect()->route('admin.donationtype.index')->with('success','Donation Created');
-        }
-        else{
-            return redirect()->route('admin.donationtype.create')->with('error','Something Went Wrong');
-        }
+        return redirect()->route('admin.donationtype.index')->with('success' , 'Donation Type Created Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
     }
 
     /**
@@ -60,7 +54,8 @@ class DonationTypeController extends Controller
         $donation_type->name = $request->name;
         $donation_type->slug = $request->slug;
         $donation_type->update();
-        return redirect()->route('admin.donationtype.index');
+        return redirect()->route('admin.donationtype.index')->with('success' , 'Donation Type Updated Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
     }
 
     /**

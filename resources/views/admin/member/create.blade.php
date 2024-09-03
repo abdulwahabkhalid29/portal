@@ -6,8 +6,20 @@
 
         <div class="card-body p-4">
 
-            <h3 class="fw-bold mb-4">Membership Form</h3>
-
+            <div class="row">
+                <div class="col-md-6">
+                  <h2 class="fw-bold mb-4">Membership Form</h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-4 " style="float: right">
+                        <div class="col-sm-auto">
+                            <div>
+                                <a href="{{ route('member.index') }}" class="btn btn-primary">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <form action="{{ route('member.store') }}" method="POST">
 
                 @csrf
@@ -240,11 +252,11 @@
 
                     </div>
 
-                    
+
 
                     <hr>
 
-                    
+
 
                     <div class="col-6">
 
@@ -298,7 +310,7 @@
 
                     </div><!--end col-->
 
-                    
+
 
                     <div class="col-4 d-flex mt-4">
 
@@ -334,7 +346,7 @@
 
                     <hr>
 
-                    
+
 
                     <p class="fw-bold">Annual Membership Fee: (Kindly select your choice of annual fee)</p>
 
@@ -348,7 +360,7 @@
 
                    </div>
 
-                
+
 
                    {{-- <div class="col-6 mt-2">
 
@@ -527,11 +539,11 @@
 
 
 
-            var input = '' + 
+            var input = '' +
 
-            '<input type="number" class="form-control mt-2" placeholder="Enter Mobile Number" name="phone_number[]" id="member_phone" required>' + 
+            '<input type="number" class="form-control mt-2" placeholder="Enter Mobile Number" name="phone_number[]" id="member_phone" required>' +
 
-            '' + 
+            '' +
 
             '';
 
@@ -548,10 +560,10 @@
 
     $(document).on("click","#add_additional_email", function () {
 
-        var input = '' + 
+        var input = '' +
 
-        '<input type="email" class="form-control mt-2" placeholder="Email @" name="additional_email[]" id="member_additional_email" required>' + 
-        '' + 
+        '<input type="email" class="form-control mt-2" placeholder="Email @" name="additional_email[]" id="member_additional_email" required>' +
+        '' +
         '';
 
         $('.extra_emails').append(input);
@@ -568,11 +580,11 @@
 
 
 
-        var input = '' + 
+        var input = '' +
 
-        '<input type="number" class="form-control mt-2" placeholder="Enter Telephone Number" name="telephone_number[]" id="member_telephone" required>' + 
+        '<input type="number" class="form-control mt-2" placeholder="Enter Telephone Number" name="telephone_number[]" id="member_telephone" required>' +
 
-        '' + 
+        '' +
 
         '';
 
@@ -590,29 +602,29 @@
 
         $(document).on("click","#add_dependent", function () {
 
-            var tr = '' + 
+            var tr = '' +
 
-            '<tr>' + 
+            '<tr>' +
 
-            '   <td><input type="text" name="dependent_name[]" class="form-control"></td>' + 
+            '   <td><input type="text" name="dependent_name[]" class="form-control"></td>' +
 
-            '   <td><input type="date" name="dependent_dob[]" class="form-control"></td>' + 
+            '   <td><input type="date" name="dependent_dob[]" class="form-control"></td>' +
 
             '   <td>' +
-            '    <select name="dependent_relation[]" class="form-control">' + 
-            '        <option value="">Select</option>' + 
-            '        <option value="Father">Father</option>' + 
-            '        <option value="Mother">Mother</option>' + 
-            '        <option value="Brother">Brother</option>' + 
-            '        <option value="Sister">Sister</option>' + 
-            '        <option value="Son">Son</option>' + 
-            '        <option value="Daughter">Daughter</option>' + 
-            '    </select>' + 
-            '   </td>' + 
+            '    <select name="dependent_relation[]" class="form-control">' +
+            '        <option value="">Select</option>' +
+            '        <option value="Father">Father</option>' +
+            '        <option value="Mother">Mother</option>' +
+            '        <option value="Brother">Brother</option>' +
+            '        <option value="Sister">Sister</option>' +
+            '        <option value="Son">Son</option>' +
+            '        <option value="Daughter">Daughter</option>' +
+            '    </select>' +
+            '   </td>' +
 
             '   <td><button type="button" class="btn remove-dependent">X</button></td>' +
 
-            ' </tr>' + 
+            ' </tr>' +
 
             '';
 

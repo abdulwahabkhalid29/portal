@@ -308,7 +308,7 @@
 
                             <li class="nav-item">
 
-                                {{-- <a href="{{ route('admin.supprtapp.create') }}" class="nav-link" data-key="t-calendar"> Create </a> --}}
+                                <a href="{{ route('admin.supportapplication.create') }}" class="nav-link" data-key="t-calendar"> Create </a>
 
                             </li>
 

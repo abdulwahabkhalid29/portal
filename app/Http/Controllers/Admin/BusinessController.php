@@ -24,7 +24,8 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         $business = Business::create($request->all());
-        return redirect()->route('admin.business.index');
+        return redirect()->route('admin.business.index')->with('success' , 'Business Created Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
     }
 
     public function approve(Request $request)

@@ -37,11 +37,11 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        
+
         $request->validate([
             'membership_number' => 'unique:users',
         ]);
-        
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -76,7 +76,7 @@ class MemberController extends Controller
         $member_information->end_date = $request->end_date;
         $member_information->member_id = $user->id;
         $member_information->save();
-        
+
 
         foreach ($request->phone_number as $key => $phone) {
             $phone_numbers = new MemberPhone();
@@ -111,8 +111,9 @@ class MemberController extends Controller
             $dependent->save();
         }
 
-        return redirect()->route('member.index');
-        
+        return redirect()->route('member.index')->with('success' , 'Member Created Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
+
     }
 
     /**
@@ -163,7 +164,8 @@ class MemberController extends Controller
         $user->baradari_member = $request->baradari_member;
         $user->membership_number = $request->membership_number;
         $user->update();
-        return redirect()->route('member.index');
+        return redirect()->route('member.index')->with('success' , 'Member Updated Successfully!');
+        return redirect()->back()->with('error' , 'Something went wrong');
     }
 
     /**
@@ -206,7 +208,7 @@ class MemberController extends Controller
         $dependent->dob = $request->dob;
         $dependent->relation = $request->relation;
         $dependent->update();
-        return response()->json(['success'=>'Dependent Updated Succesfully']); 
+        return response()->json(['success'=>'Dependent Updated Succesfully']);
     }
 
     public function dependent_destroy($id)

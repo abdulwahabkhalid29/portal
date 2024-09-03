@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 @endpush
 @section('content')
+@if(Session::has('success'))
+    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
+            <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
+        {{Session::get('success')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div><br><br><br>
+    @endif
 <div class="card m-3">
     <div class="card-header">
         <div class="row">
@@ -84,11 +91,13 @@
   <button type="button" data-toast data-toast-text="Business status updated !" data-toast-gravity="top" data-toast-position="right" data-toast-className="primary" data-toast-duration="3000" data-toast-close="close" data-toast-style="style" class="btn btn-light w-xs d-none update-msg">Default</button>
 @endsection
 @section('scripts')
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
     <script>
       $(document).on("change",".update-status", function () {
-          var is_approved = $(this).val();        
+          var is_approved = $(this).val();
           var business_id = $(this).attr('data-id');
-          
+
         $.ajax({
            type:'GET',
            url:"{{ route('approve.business') }}",
@@ -103,14 +112,8 @@
         });
 
       });
+      $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
     </script>
 @endsection
-
-@push('scripts')
-<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
-<script>
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-</script>
-@endpush

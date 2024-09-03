@@ -3,14 +3,13 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 @endpush
 @section('content')
-  @if(Session::has('success'))
-    <div class="alert alert-success d-flex align-items-center" role="alert">
-        <span class="alert-icon text-success me-2">
-          <i class="fa fa-check"></i>
-        </span>
+@if(Session::has('success'))
+    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
+            <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
         {{Session::get('success')}}
-      </div>
-      @endif
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div><br><br><br>
+    @endif
 <div class="card m-3">
     <div class="card-header">
         <div class="row">
@@ -38,7 +37,7 @@
                             <th class="text-center">No.</th>
                             <th data-sort="name">name</th>
                             <th data-sort="action">Action</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody class="list form-check-all ">

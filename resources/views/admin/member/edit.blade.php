@@ -6,8 +6,20 @@
 
         <div class="card-body p-4">
 
-            <h3 class="fw-bold mb-4">Edit Membership Form</h3>
-
+            <div class="row">
+                <div class="col-md-6">
+                  <h2 class="fw-bold mb-4">Edit Membership Form</h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-4 " style="float: right">
+                        <div class="col-sm-auto">
+                            <div>
+                                <a href="{{ route('member.index') }}" class="btn btn-primary">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <form action="{{ route('member.update',$user->id) }}" id="member-inform" method="POST">
 
                 @csrf
@@ -164,7 +176,7 @@
 
                     <hr>
 
-                    
+
 
                     <div class="col-6">
 
@@ -216,7 +228,7 @@
 
                     </div><!--end col-->
 
-                    
+
 
                     <div class="col-4 d-flex mt-4">
 
@@ -361,7 +373,7 @@
 
                    <div class="col-12 d-flex">
 
-                    
+
 
                     {{ $key+1 }}. <div class="form-check mx-2">
 
@@ -491,7 +503,7 @@
 
                                             <button class="btn btn-outline-danger shadow-none delete_dependent" data-route="{{ route('dependent.destroy',$dependent->id) }}" type="button" id="button-addon2">X</button>
 
-                                            <button class="btn btn-outline-info shadow-none update_dependent" data-route="{{ route('dependent.update',$dependent->id) }}" type="button" id="button-addon2">✓</button>         
+                                            <button class="btn btn-outline-info shadow-none update_dependent" data-route="{{ route('dependent.update',$dependent->id) }}" type="button" id="button-addon2">✓</button>
 
                                         </td>
 
@@ -511,7 +523,7 @@
 
 
 
-                    
+
 
                 </div><!--end row-->
 
@@ -530,17 +542,17 @@
     $(document).on("click","#add_number", function () {
 
 
-        var input = '' + 
+        var input = '' +
 
-            '<div class="input-group mt-1">' + 
+            '<div class="input-group mt-1">' +
 
-            '    <input type="number" class="form-control" data-id="{{ $user->id }}" placeholder="Enter Mobile Number" aria-label="Recipient\'s username" aria-describedby="button-addon2">' + 
+            '    <input type="number" class="form-control" data-id="{{ $user->id }}" placeholder="Enter Mobile Number" aria-label="Recipient\'s username" aria-describedby="button-addon2">' +
 
-            '    <button class="btn btn-outline-danger shadow-none" type="button" onclick="$(this).parent().remove();" id="button-addon2">X</button>' + 
+            '    <button class="btn btn-outline-danger shadow-none" type="button" onclick="$(this).parent().remove();" id="button-addon2">X</button>' +
 
-            '    <button class="btn btn-outline-info shadow-none add_number" data-type="Mobile" type="button" id="button-addon2">✓</button>' + 
+            '    <button class="btn btn-outline-info shadow-none add_number" data-type="Mobile" type="button" id="button-addon2">✓</button>' +
 
-            '</div>' + 
+            '</div>' +
 
             '';
 
@@ -557,17 +569,17 @@
     $(document).on("click","#add_additional_email", function () {
 
 
-        var input = '' + 
+        var input = '' +
 
-            '<div class="input-group mt-1">' + 
+            '<div class="input-group mt-1">' +
 
-            '    <input type="email" class="form-control" data-id="{{ $user->id }}" placeholder="Email @" aria-label="Recipient\'s username" aria-describedby="button-addon2">' + 
+            '    <input type="email" class="form-control" data-id="{{ $user->id }}" placeholder="Email @" aria-label="Recipient\'s username" aria-describedby="button-addon2">' +
 
-            '    <button class="btn btn-outline-danger shadow-none" type="button" onclick="$(this).parent().remove();" id="button-addon2">X</button>' + 
+            '    <button class="btn btn-outline-danger shadow-none" type="button" onclick="$(this).parent().remove();" id="button-addon2">X</button>' +
 
-            '    <button class="btn btn-outline-info shadow-none add_additional_email" type="button" id="button-addon2">✓</button>' + 
+            '    <button class="btn btn-outline-info shadow-none add_additional_email" type="button" id="button-addon2">✓</button>' +
 
-            '</div>' + 
+            '</div>' +
 
             '';
 
@@ -587,17 +599,17 @@ $(document).on("click","#add_tel", function () {
 
 
 
-    var input = '' + 
+    var input = '' +
 
-            '<div class="input-group mt-1">' + 
+            '<div class="input-group mt-1">' +
 
-            '    <input type="number" class="form-control" data-id="{{ $user->id }}" placeholder="Enter Telephone Number" aria-label="Recipient\'s username" aria-describedby="button-addon2">' + 
+            '    <input type="number" class="form-control" data-id="{{ $user->id }}" placeholder="Enter Telephone Number" aria-label="Recipient\'s username" aria-describedby="button-addon2">' +
 
-            '    <button class="btn btn-outline-danger shadow-none" type="button" onclick="$(this).parent().remove();" id="button-addon2">X</button>' + 
+            '    <button class="btn btn-outline-danger shadow-none" type="button" onclick="$(this).parent().remove();" id="button-addon2">X</button>' +
 
-            '    <button class="btn btn-outline-info shadow-none add_number" data-type="Telephone" type="button" id="button-addon2">✓</button>' + 
+            '    <button class="btn btn-outline-info shadow-none add_number" data-type="Telephone" type="button" id="button-addon2">✓</button>' +
 
-            '</div>' + 
+            '</div>' +
 
             '';
 
@@ -615,39 +627,39 @@ $(document).on("click","#add_tel", function () {
 
     $(document).on("click","#add_dependent", function () {
 
-        var tr = '' + 
+        var tr = '' +
 
-            '<tr class="single-dependent">' + 
+            '<tr class="single-dependent">' +
 
-            '    <td><input type="text" value="" name="dependent_name" class="form-control"></td>' + 
+            '    <td><input type="text" value="" name="dependent_name" class="form-control"></td>' +
 
-            '    <td><input type="date" value="" name="dependent_dob" class="form-control"></td>' + 
+            '    <td><input type="date" value="" name="dependent_dob" class="form-control"></td>' +
             '     <td>' +
-            '    <select name="dependent_relation" class="form-control">' + 
-            '        <option value="">Select</option>' + 
-            '        <option value="Father">Father</option>' + 
-            '        <option value="Mother">Mother</option>' + 
-            '        <option value="Brother">Brother</option>' + 
-            '        <option value="Sister">Sister</option>' + 
-            '        <option value="Son">Son</option>' + 
-            '        <option value="Daughter">Daughter</option>' + 
-            '    </select>' + 
+            '    <select name="dependent_relation" class="form-control">' +
+            '        <option value="">Select</option>' +
+            '        <option value="Father">Father</option>' +
+            '        <option value="Mother">Mother</option>' +
+            '        <option value="Brother">Brother</option>' +
+            '        <option value="Sister">Sister</option>' +
+            '        <option value="Son">Son</option>' +
+            '        <option value="Daughter">Daughter</option>' +
+            '    </select>' +
 
-            '     </td>' +   
+            '     </td>' +
 
-            '    <td>' + 
+            '    <td>' +
 
-            '        <button class="btn btn-outline-danger shadow-none remove_dependent" type="button" id="button-addon2">X</button>' + 
+            '        <button class="btn btn-outline-danger shadow-none remove_dependent" type="button" id="button-addon2">X</button>' +
 
-            '        <button class="btn btn-outline-info shadow-none store_dependent" data-id="{{ $user->id }}" type="button" id="button-addon2">✓</button>         ' + 
+            '        <button class="btn btn-outline-info shadow-none store_dependent" data-id="{{ $user->id }}" type="button" id="button-addon2">✓</button>         ' +
 
-            '    </td>' + 
+            '    </td>' +
 
-            '</tr>' + 
+            '</tr>' +
 
             '';
 
-        
+
 
         $('.dependents').append(tr);
 
@@ -664,11 +676,11 @@ $(document).on("click","#add_tel", function () {
 
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".store_dependent",function(){
 
-   
+
 
         var name = $(this).closest("tr").find("input[name='dependent_name']").val();
 
@@ -680,7 +692,7 @@ $(document).on("click","#add_tel", function () {
 
         var url = "{{ route('dependent.store') }}";
 
-        
+
 
         $.ajax({
 
@@ -701,13 +713,13 @@ $(document).on("click","#add_tel", function () {
 
            success:function(data){
 
-                // 
+                //
 
            }
 
         });
 
-  
+
 
     });
 
@@ -719,11 +731,11 @@ $(document).on("click","#add_tel", function () {
 
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".update_dependent",function(){
 
-   
+
 
         var name = $(this).closest("tr").find("input[name='dependent_name']").val();
 
@@ -733,7 +745,7 @@ $(document).on("click","#add_tel", function () {
 
         var url = $(this).attr('data-route');
 
-        
+
 
         $.ajax({
 
@@ -755,13 +767,13 @@ $(document).on("click","#add_tel", function () {
 
            success:function(data){
 
-                // 
+                //
 
            }
 
         });
 
-  
+
 
     });
 
@@ -771,7 +783,7 @@ $(document).on("click","#add_tel", function () {
 
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".delete_dependent",function(){
 
@@ -810,20 +822,20 @@ $(document).on("click","#add_tel", function () {
 
                         swal("Your Dependent has been removed!", {
                             icon: "success",
-                            }); 
+                            });
 
                     }
 
                     });
 
 
-            } 
-            
+            }
+
             else {
                 swal("Your Dependent is safe!");
             }
         });
-  
+
 
     });
 
@@ -833,11 +845,11 @@ $(document).on("click","#add_tel", function () {
 {{-- TELEPHONE AND PHONE ACTIONS --}}
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".add_number",function(){
 
-   
+
 
         var number = $(this).closest(".input-group").find("input[type='number']").val();
 
@@ -869,13 +881,13 @@ $(document).on("click","#add_tel", function () {
 
            success:function(data){
 
-                // 
+                //
 
            }
 
         });
 
-  
+
 
     });
 
@@ -885,11 +897,11 @@ $(document).on("click","#add_tel", function () {
 
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".update_number",function(){
 
-   
+
 
         var number = $(this).closest(".input-group").find("input[type='number']").val();
 
@@ -897,7 +909,7 @@ $(document).on("click","#add_tel", function () {
 
         var url = $(this).attr('data-route');
 
-        
+
 
         $.ajax({
 
@@ -917,13 +929,13 @@ $(document).on("click","#add_tel", function () {
 
            success:function(data){
 
-                // 
+                //
 
            }
 
         });
 
-  
+
 
     });
 
@@ -933,7 +945,7 @@ $(document).on("click","#add_tel", function () {
 
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".delete_number",function(){
 
@@ -946,7 +958,7 @@ $(document).on("click","#add_tel", function () {
         })
         .then((willDelete) => {
             if (willDelete) {
-            
+
                 var member_id = $(this).closest("input").attr('data-id');
 
                 var url = $(this).attr('data-route');
@@ -961,7 +973,7 @@ $(document).on("click","#add_tel", function () {
 
                     data:{
 
-                    member_id: member_id, 
+                    member_id: member_id,
 
                     _token:"{{ csrf_token() }}",
 
@@ -971,24 +983,24 @@ $(document).on("click","#add_tel", function () {
 
                     swal("Your Number has been deleted!", {
                     icon: "success",
-                     }); 
+                     });
 
                 }
 
                 });
 
             }
-            
-            
+
+
             else {
                 swal("Your Number is safe!");
             }
         });
 
 
-       
 
-  
+
+
 
     });
 
@@ -997,11 +1009,11 @@ $(document).on("click","#add_tel", function () {
 {{-- ADDITIONAL EMAIL ACTIONS --}}
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".add_additional_email",function(){
 
-   
+
 
         var email = $(this).closest(".input-group").find("input[type='email']").val();
 
@@ -1029,13 +1041,13 @@ $(document).on("click","#add_tel", function () {
 
            success:function(data){
 
-                // 
+                //
 
            }
 
         });
 
-  
+
 
     });
 
@@ -1045,11 +1057,11 @@ $(document).on("click","#add_tel", function () {
 
 <script type="text/javascript">
 
-   
+
 
     $(document).on("click",".update_email",function(){
 
-   
+
 
         var email = $(this).closest(".input-group").find("input[type='email']").val();
 
@@ -1057,7 +1069,7 @@ $(document).on("click","#add_tel", function () {
 
         var url = $(this).attr('data-route');
 
-        
+
 
         $.ajax({
 
@@ -1077,13 +1089,13 @@ $(document).on("click","#add_tel", function () {
 
            success:function(data){
 
-                // 
+                //
 
            }
 
         });
 
-  
+
 
     });
 
@@ -1104,7 +1116,7 @@ $(document).on("click","#add_tel", function () {
         })
         .then((willDelete) => {
             if (willDelete) {
-            
+
                 var member_id = $(this).closest("input").attr('data-id');
 
                 var url = $(this).attr('data-route');
@@ -1119,7 +1131,7 @@ $(document).on("click","#add_tel", function () {
 
                     data:{
 
-                    member_id: member_id, 
+                    member_id: member_id,
 
                     _token:"{{ csrf_token() }}",
 
@@ -1129,15 +1141,15 @@ $(document).on("click","#add_tel", function () {
 
                     swal("Your Email has been deleted!", {
                     icon: "success",
-                     }); 
+                     });
 
                 }
 
                 });
 
             }
-            
-            
+
+
             else {
                 swal("Your Email is safe!");
             }
