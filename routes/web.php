@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Member\BusinessController;
-
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PhoneController;
 use App\Http\Controllers\Admin\EmailController;
 use App\Http\Controllers\Admin\SupportApplicationController;
+use App\Http\Controllers\Admin\ZipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,4 @@ Route::group(['`middleware`' => ['auth','isAdmin']], function () {
 
     });
 });
+Route::get('/downloadZip',[ZipController::class , 'qrzip'])->name('download.zip');

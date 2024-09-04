@@ -9,6 +9,8 @@ use App\Models\MemberPhone;
 use App\Models\MemberEmail;
 use App\Models\Dependent;
 use App\Models\User;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 use Hash;
 
@@ -62,6 +64,10 @@ class MemberController extends Controller
         $user->received_at = $request->received_at;
         $user->baradari_member = $request->baradari_member;
         $user->membership_number = $request->membership_number;
+        $url='https://portal.baws.org.pk/member/'.$request->membership_number;
+        $qrCode = QrCode::format('png')->size(1023)->generate($url);
+        $file = 'public/QrCodes/' . $request->membership_number . '.png';
+        Storage::disk('local')->put($file, $qrCode);
         $user->save();
 
         $member_information = new Membership();

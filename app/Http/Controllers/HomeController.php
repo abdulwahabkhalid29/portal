@@ -9,6 +9,7 @@ use App\Models\Business;
 use App\Models\Membership;
 use App\Models\User;
 
+
 class HomeController extends Controller
 {
     /**
@@ -33,6 +34,6 @@ class HomeController extends Controller
         $data['totalMembership'] = User::count();
         $data['totalJobSeeker'] = JobSeeker::count();
         $data['totalFess'] = Membership::where('end_date', '<', date('Y-m-d'))->count();
-        return view('home',$data);
+        return view('home',$data);  
     }
 }

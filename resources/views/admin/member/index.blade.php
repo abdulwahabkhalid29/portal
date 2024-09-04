@@ -3,13 +3,22 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
 @endpush
 @section('content')
-@if(Session::has('success'))
-    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
-            <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
-        {{Session::get('success')}}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div><br><br><br>
-    @endif
+<div class="row">
+    <div class="col-md-6">
+        <form action="{{route('download.zip')}}" method="GET" id="qrcode-zip-form">
+            @csrf
+            <button type="submit" class="btn text-light" style="background-color: #45cb85; margin-left:20px;" id="export_ids">Export File</button>
+        </form>
+    </div>
+    <div class="col-md-6">@if(Session::has('success'))
+        <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
+                <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
+            {{Session::get('success')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div><br><br><br>
+        @endif
+    </div>
+</div>
 <div class="card m-3">
     <div class="card-header">
         <div class="row">
@@ -21,7 +30,7 @@
                 <div class="row g-4 " style="float: right">
                     <div class="col-sm-auto">
                         <div>
-                            <a href="{{ route('member.create') }}" ><button type="button" class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
+                            <a href="{{ route('member.create') }}" ><button type="button"   class="btn btn-success add-btn" id="create-btn"><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
                         </div>
                     </div>
                 </div>
@@ -34,6 +43,7 @@
                 <table class="table align-middle border table-hover mt-3 mb-3"  id="myTable">
                     <thead  style=" background-color:#45cb85;  color:white;">
                         <tr>
+                            <th><input type="checkbox" class="text-center" id="select_all_ids"></th>
                             <th class="text-center">No.</th>
                             <th data-sort="customer_name">Member Name</th>
                             <th data-sort="email">CNIC NO.</th>
@@ -43,6 +53,7 @@
                     <tbody class="list form-check-all">
                         @foreach ($users as $index=>$user)
                             <tr>
+                                <td><input type="checkbox" class="checkbox_ids text-center" form="qrcode-zip-form" name="ids[]" value="{{ $user->id }}"></td>
                                 <td class="text-center">{{++$index}}</td>
                                 <td class="phone">{{ $user->name }}</td>
                                 <td class="date">{{ $user->cnic_number }}</td>
@@ -81,10 +92,29 @@
 @endsection
 
 @push('scripts')
+
+@if (Session::has('error'))
+    <script>
+        swal("{{ Session::get('error') }}","","warning");
+    </script>
+@endif
+
 <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable();
 } );
+$('#myTable').DataTable({
+    "columnDefs": [ {
+        "targets": 0,
+        "orderable": false
+        } ]
+});
+$( function (e) {
+    $("#select_all_ids").click(function(){
+        $(".checkbox_ids").prop('checked',$(this).prop('checked'));
+    });
+   
+});
 </script>
 @endpush

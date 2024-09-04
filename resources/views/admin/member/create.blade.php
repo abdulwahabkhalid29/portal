@@ -304,7 +304,7 @@
 
                             <label for="firstNameinput" class="form-label">Membership Number:</label>
 
-                            <input type="number" class="form-control" name="membership_number" placeholder="" id="firstNameinput">
+                            <input type="text" class="form-control" name="membership_number" placeholder="" id="firstNameinput">
 
                         </div>
 
