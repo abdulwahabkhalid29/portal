@@ -140,7 +140,7 @@
                                     @foreach ($dependents as $dependent)
                                     <tr>
                                         <td>{{ $dependent->name }}</td>
-                                        <td>{{ $dependent->dob }}</td>
+                                        <td>{{ date('d M Y' , strtotime( $dependent->dob ))}}</td>
                                         <td>{{ $dependent->relation }}</td>
                                     </tr>
                                     @endforeach
