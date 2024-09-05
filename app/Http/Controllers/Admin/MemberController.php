@@ -9,6 +9,8 @@ use App\Models\MemberPhone;
 use App\Models\MemberEmail;
 use App\Models\Dependent;
 use App\Models\User;
+use App\Models\Business;
+use App\Models\JobSeeker;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
 use Auth;
@@ -129,10 +131,12 @@ class MemberController extends Controller
     {
         $user = User::find($id);
         $member_information = Membership::where('member_id',$user->id)->get();
+        $jobs = JobSeeker::where('member_id',$user->id)->get();
+        $businesses = Business::where('member_id',$user->id)->get();
         $mobile_numbers = MemberPhone::where('member_id',$user->id)->where('type','Mobile')->get();
         $telephone_numbers = MemberPhone::where('member_id',$user->id)->where('type','Telephone')->get();
         $dependents = Dependent::where('parent_id',$user->id)->get();
-        return view('admin.member.show',compact('user','member_information','mobile_numbers','telephone_numbers','dependents'));
+        return view('admin.member.show',compact('user','member_information','mobile_numbers','telephone_numbers','dependents','jobs','businesses'));
     }
 
     /**

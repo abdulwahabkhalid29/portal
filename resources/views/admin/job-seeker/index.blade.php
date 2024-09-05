@@ -55,11 +55,11 @@
                                 <td>{{ $seeker->city }}</td>
                                 <td>{{ $seeker->created_at->diffForhumans() }}</td>
                                 <td>
-                                  <a href="{{ route('admin.job-seeker.edit',$seeker->id) }}" class="text-success "><i class="fa fa-edit"> Edit </i></a>&nbsp;|&nbsp;
+                                  <a href="{{ route('admin.job-seeker.edit',$seeker->id) }}" class="text-success "><i class="fa fa-edit">  </i> Edit</a>&nbsp;|&nbsp;
                                   {{-- <a href="{{ route('admin.job-seeker.destroy',$seeker->id) }}" class="btn btn-danger btn-sm">Delete</a> --}}
-                                  <button class="delete-seeker" data-id="{{ $seeker->id }}"
+                                  <button class="delete-seeker text-danger" data-id="{{ $seeker->id }}"
                                     style="border: none; background-color: transparent;"><i
-                                        class="pointer-cursor fa fa-trash text-danger"> Delete</i> </button></td>
+                                        class="pointer-cursor fa fa-trash text-danger"> </i> Delete</button></td>
                             </tr>
                         @endforeach
                     </tbody>

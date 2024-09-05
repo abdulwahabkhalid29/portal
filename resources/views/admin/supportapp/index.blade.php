@@ -49,11 +49,11 @@
                                 <td >{{ $support_application->title }}</td>
                                 <td class="mt-5">{{ $support_application->description }}</td>
                                 <td class="mt-5">
-                                <a href="{{ route('admin.supportapplication.edit',$support_application->id) }}" class="text-success  p-1"><i class="fa fa-edit"> Edit</i></a>&nbsp;|&nbsp;
+                                <a href="{{ route('admin.supportapplication.edit',$support_application->id) }}" class="text-success  p-1"><i class="fa fa-edit"> </i> Edit</a>&nbsp;|&nbsp;
                                 {{-- <a href="{{ route('admin.supportapplication.destroy',$supportapplication->id) }}" class="text-danger p-1"><i class="fa fa-trash"> Delete</i></a> --}}
-                                <button class="delete-supportapplication" data-id="{{$support_application->id}}"
+                                <button class="delete-supportapplication text-danger" data-id="{{$support_application->id}}"
                                     style="border: none; background-color: transparent;"><i
-                                        class="pointer-cursor fa fa-trash text-danger"> Delete</i> </button>
+                                        class="pointer-cursor fa fa-trash text-danger"> </i> Delete</button>
                                 </td>
                             </tr>
                         @endforeach

@@ -60,10 +60,10 @@
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">
-                                            <a href="{{ route('member.show',$user->id) }}" class=" text-info edit-item-btn"> <i class="fa fa-eye"> Show </i></a>
+                                            <a href="{{ route('member.show',$user->id) }}" class=" text-info edit-item-btn"> <i class="fa fa-eye"> </i> Show</a>
                                         </div>|
                                         <div class="edit">
-                                            <a href="{{ route('member.edit',$user->id) }}" class="text-success edit-item-btn"> <i class="fa fa-edit"> Edit </i></a>
+                                            <a href="{{ route('member.edit',$user->id) }}" class="text-success edit-item-btn"> <i class="fa fa-edit"> </i> Edit</a>
                                         </div>
                                         {{-- <div class="remove">
                                             <button class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>

@@ -69,7 +69,7 @@
                     <div class="row">
                         @forelse($galleries as $gallery)
                             <div class="col-md-2 m-2 text-center" style="border: 1px solid #CED4DA;">
-                                <img src="{{ asset('storage/product/'.$gallery->images) }}"
+                                <img src="{{ asset('upload/multiImage/'.$gallery->images) }}"
                                     alt="{{ $gallery->images }}" style="height: 100px; width: 200px;" class="mt-2 img-thumbnail"
                                     data-gallery-id="{{ $gallery->id }}">
                                     {{-- <b>Main image</b> --}}

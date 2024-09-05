@@ -57,11 +57,11 @@
                                 <td class="date">{{ date('d M Y' , strtotime( $fee->end_date ))}}</td>
                                 <td class="date">{!! ($fee->end_date) > date('Y-m-d') ? '<span class="badge rounded-pill bg-success">Remaining Date</span>' : '<span class="badge rounded-pill bg-danger">Past Due</span>' !!}</td>
                                 <td>
-                                    <a href="{{ route('admin.fees.edit',$fee->id) }}" class="text-success "><i class="fa fa-edit"> Edit </i></a>&nbsp;|&nbsp;
+                                    <a href="{{ route('admin.fees.edit',$fee->id) }}" class="text-success "><i class="fa fa-edit">  </i> Edit</a>&nbsp;|&nbsp;
                                     {{-- <a href="{{ route('admin.job-fee.destroy',$fee->id) }}" class="btn btn-danger btn-sm">Delete</a> --}}
-                                    <button class="delete-fee" data-id="{{ $fee->id }}"
+                                    <button class="delete-fee text-danger" data-id="{{ $fee->id }}"
                                       style="border: none; background-color: transparent;"><i
-                                          class="pointer-cursor fa fa-trash text-danger"> Delete</i> </button>
+                                          class="pointer-cursor fa fa-trash text-danger"> </i> Delete </button>
                                 </td>
                             </tr>
                         @endforeach

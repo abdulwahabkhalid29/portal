@@ -54,11 +54,11 @@
                                 <td class="text-center mt-5">{{ $job->salary }}</td>
                                 <td class="mt-5">{{ $job->created_at->diffForhumans() }}</td>
                                 <td class="mt-5">
-                                  <a href="{{ route('admin.job.edit',$job->id) }}" class="text-success  p-1"><i class="fa fa-edit"> Edit</i></a>&nbsp;|&nbsp;
+                                  <a href="{{ route('admin.job.edit',$job->id) }}" class="text-success  p-1"><i class="fa fa-edit"> </i> Edit</a>&nbsp;|&nbsp;
                                   {{-- <a href="{{ route('admin.job.destroy',$job->id) }}" class="text-danger p-1"><i class="fa fa-trash"> Delete</i></a> --}}
-                                  <button class="delete-job" data-id="{{ $job->id }}"
+                                  <button class="delete-job text-danger" data-id="{{ $job->id }}"
                                     style="border: none; background-color: transparent;"><i
-                                        class="pointer-cursor fa fa-trash text-danger"> Delete</i> </button>
+                                        class="pointer-cursor fa fa-trash text-danger"> </i> Delete </button>
                                 </td>
                             </tr>
                         @endforeach

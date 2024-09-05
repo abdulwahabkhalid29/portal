@@ -1,157 +1,191 @@
 @extends('layouts.master')
 @section('content')
-    <div class="card p-2">
-        <div class="card-body p-4">
-            <h3 class="fw-bold mb-4 text-center">Membership Form</h3>
-            <form action="javascript:void(0)">
-                <div class="row">
 
-
-                    <div class="card" id="contact-view-detail">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Name :</b></label>
-                                    <p style="color: gray">{{ $user->name }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Father Name :</b></label>
-                                    <p style="color: gray">{{ $user->father_name }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Email ID :</b></label>
-                                    <p style="color: gray">{{ $user->email }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>CNIC NO :</b></label>
-                                    <p style="color: gray">{{ $user->cnic_number }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Father CNIC NO :</b></label>
-                                    <p style="color: gray">{{ $user->father_cnic }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Gender :</b></label>
-                                    <p style="color: gray">{{ $user->gender }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Qualification :</b></label>
-                                    <p style="color: gray">{{ $user->qualification }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Date Of Birth :</b></label>
-                                    <p style="color: gray">{{ $user->dob }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Occupation :</b></label>
-                                    <p style="color: gray">{{ $user->occupation }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Address :</b></label>
-                                    <p style="color: gray">{{ $user->address }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Area :</b></label>
-                                    <p style="color: gray">{{ $user->area }}</p>
-                                </div>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>City :</b></label>
-                                    <p style="color: gray">{{ $user->city }}</p>
-                                </div>
-                                <div class="col-md-12 mt-3">
-                                    <label for=""><b>Country :</b></label>
-                                    <p style="color: gray">{{ $user->country }}</p>
-                                </div>
-                                <hr><hr>
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Form Recieved By :</b></label>
-                                    <p style="color: gray">{{ $user->received_by }}</p>
-                                </div>                                
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Verified By :</b></label>
-                                    <p style="color: gray">{{ $user->verified_by }}</p>
-                                </div>                                
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Recieved On :</b></label>
-                                    <p style="color: gray">{{ $user->received_at }}</p>
-                                </div>                                
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Membership Number :</b></label>
-                                    <p style="color: gray">{{ $user->membership_number }}</p>
-                                </div>                                
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Baradari Member :</b></label>
-                                    <p style="color: gray">{{ $user->baradari_member }}</p>
-                                </div>                                
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Mobile Numbers :</b></label>
-                                    @foreach ($mobile_numbers as $number)
-                                        <p style="color: gray">{{ $number->phone_number }}</p>
-                                    @endforeach
-                                </div>                                
-                                <div class="col-md-2 mt-3">
-                                    <label for=""><b>Telephone Numbers :</b></label>
-                                    @foreach ($telephone_numbers as $number)
-                                        <p style="color: gray">{{ $number->phone_number }}</p>
-                                    @endforeach
-                                </div>
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="profile-foreground position-relative mx-n4 mt-n4">
+                <div class="profile-wid-bg">
+                    <img src="{{ url('assets/images/profile-bg.jpg') }}" alt="" class="profile-wid-img">
+                </div>
+            </div>
+            <div class="pt-4 mb-4 mb-lg-3 pb-lg-4 profile-wrapper">
+                <div class="row g-4">
+                    <div class="col-auto">
+                        <div class="avatar-lg">
+                            <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-thumbnail rounded-circle">
+                        </div>
+                    </div>
+                    <!--end col-->
+                    <div class="col">
+                        <div class="p-2">
+                            <h3 class="text-white mb-1">{{ $user->name }}</h3>
+                            <p class="text-white text-opacity-75">{{ $user->father_name }}</p>
+                            <div class="hstack text-white-50 gap-1">
                             </div>
                         </div>
                     </div>
+                    <!--end col-->
+                    <!--end col-->
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>Annual Membership Fee History:</h4>   
-                                <table class="table table-nowrap mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Fees</th>
-                                            <th>Payment Mode</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($member_information as $key => $fee)
-                                        <tr>
-                                            <td>Rs. {{ $fee->fees }}/-</td>
-                                            <td>{{ $fee->payment_type }}</td>
-                                            <td>{{ date('d M Y' , strtotime( $fee->start_date ))}}</td>
-                                            <td>{{ date('d M Y' , strtotime( $fee->end_date ))}}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>     
-                        </div>
+                </div>
+                <!--end row-->
+            </div>
 
-                   
-                    <div class="col-md-6 mt-3">
-                        <div class="table-responsive table-card">
-                            <h4>Details Of Dependents :</h4>   
-                            <table class="table table-nowrap mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Date Of Birth</th>
-                                        <th scope="col">Relation</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="dependents">
-                                    @foreach ($dependents as $dependent)
-                                    <tr>
-                                        <td>{{ $dependent->name }}</td>
-                                        <td>{{ date('d M Y' , strtotime( $dependent->dob ))}}</td>
-                                        <td>{{ $dependent->relation }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <div class="d-flex profile-wrapper" style="float: right;">
+                            <!-- Nav tabs -->
+                            <div class="flex-shrink-0">
+                                <a href="{{ route('member.edit',$user->id) }}" class="btn btn-success"><i class="ri-edit-box-line align-bottom"></i> Edit Profile</a>
+                            </div>
                         </div>
+                        <!-- Tab panes -->
+                        <div class="tab-content pt-5 text-muted">
+                            <div class="tab-pane active" id="overview-tab" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-xxl-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-5">Complete Your Profile</h5>
+                                                <div class="progress animated-progress custom-progress progress-label">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="label">30%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-borderless mb-0">
+                                                        <tbody>
+                                                            <img style="border-radius:10px; margin-left:40px;" height="150px" width="170px" src="{{ asset('storage/QrCodes/'.$user->membership_number.'.png') }}" alt="">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div><!-- end card -->
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <div class="flex-grow-1">
+                                                        <h5 class="card-title mb-0">Job Applications</h5>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex align-items-center py-3">
+                                                        {{-- <div class="avatar-xs flex-shrink-0 me-3">
+                                                            <img src="{{asset('assets/images/user.jpg')}}" alt="" class="img-fluid rounded-circle shadow">
+                                                        </div> --}}
+                                                        <div class="flex-grow-1">
+                                                            <div>
+                                                                @forelse ($jobs as  $key => $seeker)
+                                                                <h5 class="fs-14 mb-1">{{$seeker->title}}</h5>
+                                                                <p style="color: gray">{{ date('d M Y' , strtotime( $seeker->created_at ))}}</p>
+                                                                @empty
+                                                            <td colspan="3" class="text-center">No Record Found!</td>
+                                                            @endforelse
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <div class="flex-grow-1">
+                                                        <h5 class="card-title mb-0">Businesses</h5>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex align-items-center py-3">
+                                                        <div class="avatar-xs flex-shrink-0 me-3">
+                                                            <img src="{{asset('assets/images/user.jpg')}}" alt="" class="img-fluid rounded-circle shadow">
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <div>
+                                                                @forelse ($businesses as $business)
+                                                                    <h5 class="fs-14 mb-1">{{$business->name}}</h5>
+                                                                    <small><a href="javascript:;" class="text-success edit-item-btn"> <i class="fa fa-edit"> </i> Edit</a></small>
+                                                                    @empty
+                                                                <td colspan="3" class="text-center">No Record Found!</td>
+                                                                @endforelse
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end card body -->
+                                        </div>
+                                        <!--end card-->
+                                        <!--end card-->
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-md-9">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3 class="card-title mb-3">Info</h3>
+                                                        <table class="table table-borderless">
+                                                            <tbody>
+                                                                <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <p>E-mail :</p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->email}}</p>
+                                                                </div>
+                                                                <div class="col-md-12"></div>
+                                                                <div class="col-md-3">
+                                                                    <p>CNIC NO :</p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->cnic_number}}</p>
+                                                                </div>
+                                                                <div class="col-md-12"></div>
+                                                                <div class="col-md-3">
+                                                                    <p>Membership Number :</p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->membership_number}}</p>
+                                                                </div>
+                                                                <div class="col-md-12"></div>
+                                                                <div class="col-md-3">
+                                                                    <p>City :</p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->city}}</p>
+                                                                </div>
+                                                                <div class="col-md-12"></div>
+                                                                <div class="col-md-3">
+                                                                    <p>Location :</p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->address}}</p>
+                                                                </div>
+                                                            </div>
+                                                            </tbody>
+                                                        </table>
+                                                    <!--end row-->
+                                            </div>
+                                            <!--end card-body-->
+                                        </div><!-- end card -->
+
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+                            </div>
+                            <!--end tab-pane-->
+                        </div>
+                        <!--end tab-content-->
                     </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
 
-
-                </div><!--end row-->
-            </form>
-        </div>
-    </div>
+        </div><!-- container-fluid -->
+    </div><!-- End Page-content -->
 @endsection

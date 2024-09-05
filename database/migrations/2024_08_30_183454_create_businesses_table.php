@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('fb_link')->nullable();
             $table->string('insta_link')->nullable();
             $table->string('linkedin_link')->nullable();
+            $table->string('logo')->nullable();
             $table->integer('is_approved');
             $table->timestamps();
         });

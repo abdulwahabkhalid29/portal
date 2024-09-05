@@ -50,11 +50,11 @@
                                 <td >{{ $donation->member->name }}</td>
                                 <td class="mt-5 text-center">{{ $donation->amount }}</td>
                                 <td class="mt-5">
-                                  <a href="{{ route('admin.donation.edit',$donation->id) }}" class="text-success  p-1"><i class="fa fa-edit"> Edit</i></a>&nbsp;|&nbsp;
+                                  <a href="{{ route('admin.donation.edit',$donation->id) }}" class="text-success  p-1"><i class="fa fa-edit"> </i> Edit</a>&nbsp;|&nbsp;
                                   {{-- <a href="{{ route('admin.donation.destroy',$donation->id) }}" class="text-danger p-1"><i class="fa fa-trash"> Delete</i></a> --}}
-                                  <button class="delete-donation" data-id="{{ $donation->id }}"
+                                  <button class="delete-donation text-danger" data-id="{{ $donation->id }}"
                                     style="border: none; background-color: transparent;"><i
-                                        class="pointer-cursor fa fa-trash text-danger"> Delete</i> </button>
+                                        class="pointer-cursor fa fa-trash text-danger"> </i> Delete</button>
                                 </td>
                             </tr>
                         @endforeach

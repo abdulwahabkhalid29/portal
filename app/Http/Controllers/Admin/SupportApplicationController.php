@@ -34,7 +34,7 @@ class SupportApplicationController extends Controller
             $isFirstImage = true;
             foreach($request->file('images') as $index=>$image){
                 $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
-                $image->move(public_path('storage/product/'),$imageName);
+                $image->move(public_path('upload/multiImage/'),$imageName);
                 $isMain = $isFirstImage? 1 : 0;
                 Gallery::create([
                     'support_application_id' => $store->id,
@@ -66,7 +66,7 @@ class SupportApplicationController extends Controller
             $isFirstImage = true;
             foreach($request->file('images') as $index=>$image){
                 $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
-                $image->move(public_path('storage/product/'),$imageName);
+                $image->move(public_path('upload/multiImage/'),$imageName);
                 $isMain = $isFirstImage? 1 : 0;
                 Gallery::create([
                     'support_application_id' => $store->id,
@@ -93,8 +93,8 @@ public function deleteImage($galleryId)
 
   $gallery = Gallery::find($galleryId);
 
-  if ($gallery->image && file_exists(public_path('storage/product/'. $gallery->image))) {
-    unlink(public_path('storage/product/'. $gallery->image));
+  if ($gallery->image && file_exists(public_path('upload/multiImage/'. $gallery->image))) {
+    unlink(public_path('upload/multiImage/'. $gallery->image));
 }
   if ($gallery) {
 
@@ -120,7 +120,7 @@ public function update(Request $request, $id){
         $isFirstImage = true;
         foreach($request->file('images') as $index=>$image){
             $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
-            $image->move(public_path('storage/product/'),$imageName);
+            $image->move(public_path('upload/multiImage/'),$imageName);
             $isMain = $isFirstImage? 1 : 0;
             Gallery::create([
                 'support_application_id' => $supportApplication->id,
