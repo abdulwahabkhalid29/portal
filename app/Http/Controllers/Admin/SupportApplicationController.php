@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SupportApplication;
 use App\Models\Gallery;
+use App\Models\User;
 
 class SupportApplicationController extends Controller
 {
@@ -16,15 +17,18 @@ class SupportApplicationController extends Controller
     }
     public function create()
     {
-        return view('admin.supportapp.create');
+        $users = User::where('role_as','member')->get();
+        return view('admin.supportapp.create',compact('users'));
     }
     public function store(Request $request){
         $request->validate([
+            'member_id' => 'required|max:255',
             'title' => 'required|max:255',
             'description' => 'required',
 
         ]);
         $store = SupportApplication::create([
+            'member_id' => $request->member_id,
             'title' => $request->title,
             'description' => $request->description,
 
@@ -33,7 +37,7 @@ class SupportApplicationController extends Controller
         if($request->has('images')){
             $isFirstImage = true;
             foreach($request->file('images') as $index=>$image){
-                $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
+                $imageName = 'multiImage'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
                 $image->move(public_path('upload/multiImage/'),$imageName);
                 $isMain = $isFirstImage? 1 : 0;
                 Gallery::create([
@@ -52,11 +56,13 @@ class SupportApplicationController extends Controller
     }
         public function multiStoreProduct(Request $request){
         $request->validate([
+            'member_id' => 'required|max:255',
             'title' => 'required|max:255',
             'description' => 'required',
 
         ]);
         $store = SupportApplication::create([
+            'member_id' => $request->member_id,
             'title' => $request->title,
             'description' => $request->description,
 
@@ -65,7 +71,7 @@ class SupportApplicationController extends Controller
         if($request->has('images')){
             $isFirstImage = true;
             foreach($request->file('images') as $index=>$image){
-                $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
+                $imageName = 'multiImage'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
                 $image->move(public_path('upload/multiImage/'),$imageName);
                 $isMain = $isFirstImage? 1 : 0;
                 Gallery::create([
@@ -84,9 +90,10 @@ class SupportApplicationController extends Controller
     }
     public function edit(string $id)
     {
+        $users = User::where('role_as','member')->get();
         $support_application = SupportApplication::find($id);
         $galleries = Gallery::where('support_application_id',$id)->get();
-        return view('admin.supportapp.edit',compact('support_application','galleries'));
+        return view('admin.supportapp.edit',compact('support_application','galleries','users'));
     }
 public function deleteImage($galleryId)
 {
@@ -107,11 +114,13 @@ public function deleteImage($galleryId)
 }
 public function update(Request $request, $id){
     $request->validate([
+        'member_id' => 'required|max:255',
         'title' => 'required|max:255',
         'description' => 'required|max:8000',
     ]);
     $supportApplication = SupportApplication::where('id', $id)->first();
     $update = $supportApplication->update([
+        'member_id' => $request->member_id,
         'title' => $request->title,
         'description' => $request->description,
     ]);
@@ -119,7 +128,7 @@ public function update(Request $request, $id){
     if($request->has('images')){
         $isFirstImage = true;
         foreach($request->file('images') as $index=>$image){
-            $imageName = 'product'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
+            $imageName = 'multiImage'. '-'. time().'-'.rand(1000,100). '.'. $image->getClientOriginalExtension();
             $image->move(public_path('upload/multiImage/'),$imageName);
             $isMain = $isFirstImage? 1 : 0;
             Gallery::create([

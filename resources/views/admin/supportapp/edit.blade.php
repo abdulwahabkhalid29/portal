@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('style')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> --}}
 <style>
     #multiple-uploader {
             width: 100%;
@@ -34,7 +34,7 @@
                     <div class="row g-4 " style="float: right">
                         <div class="col-sm-auto">
                             <div>
-                                <a href="{{ route('admin.supportapplication.index') }}" class="btn btn-sm" style="background-color: #45cb85;"><i class="	fa fa-toggle-left align-bottom me-1"></i> Back</a>
+                                <a href="{{ route('admin.supportapplication.index') }}" class="btn text-light btn-lg" style="background-color: #45cb85;"><i class="	fa fa-toggle-left"></i> Back</a>
                             </div>
                         </div>
                     </div>
@@ -43,19 +43,30 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 mt-3">
                         <label for="" class="form-label"> Title</label>
                         <input type="text" class="form-control" name="title" value="{{ $support_application->title }}" placeholder="" required>
                     </div>
                     <div class="col-6 mt-3">
                         <div class="mb-3">
+                            <label for="lastNameinput" class="form-label">Members</label>
+                            <select name="member_id" class="select2 form-control " required>
+                              <option selected disabled>--Select Member--</option>
+                              @foreach ($users as $user)
+                                  <option {{ ($support_application->member_id) == $user->id ? 'selected' : '' }} value="{{ $user->id }}">{{ $user->name }}</option>
+                              @endforeach
+                            </select>
+                        </div>    
+                      </div>
+                    <div class="col-12 mt-3">
+                        <div class="mb-3">
                             <label for="lastNameinput" class="form-label"> Description</label>
-                            <textarea name="description" class="form-control" id="" cols="30" rows="10" required>{{ $support_application->description }}</textarea>
+                            <textarea name="description" class="form-control" id="" cols="20" rows="5" required>{{ $support_application->description }}</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 col-12 mt-4">
-                    <label for="image">Image <span class="text-danger">*</span></label>
+                    <label for="image">Image</label>
                     <div class="multiple-uploader" id="multiple-uploader">
                         <div class="mup-msg">
                             <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
@@ -90,7 +101,7 @@
                 {{-- <input type="file" class="filepond" name="image" multiple data-max-file-size="3MB" data-max-files="3"/> --}}
 
                 <div class="text-end">
-                    <button type="submit" class="btn" style="background-color: #45cb85  ">Update</button>
+                    <button type="submit" class="btn btn-lg text-light" style="background-color: #45cb85  ">Update</button>
                 </div>
             </form>
         </div>

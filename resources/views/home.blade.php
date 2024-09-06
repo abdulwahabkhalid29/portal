@@ -1749,7 +1749,8 @@
                                     </div>
                                     <div class="flex-shrink-0">
                                         <h5 class="text-danger fs-14 mb-0">
-                                            {{-- <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 % --}}
+                                        <a href="{{route('expired')}}" class="text-decoration-underline">Report</a>
+                                        {{-- <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 % --}}
                                         </h5>
                                     </div>
                                 </div>

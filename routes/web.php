@@ -58,3 +58,4 @@ Route::group(['`middleware`' => ['auth','isAdmin']], function () {
     });
 });
 Route::get('/downloadZip',[ZipController::class , 'qrzip'])->name('download.zip');
+Route::get('/expired',[HomeController::class , 'expired'])->name('expired');

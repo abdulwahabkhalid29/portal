@@ -4,7 +4,7 @@
 @endpush
 @section('content')
 @if(Session::has('success'))
-    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
+    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" id="my-app" style="float: right;" role="alert">
             <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
         {{Session::get('success')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -41,6 +41,7 @@
                             <th class="text-center" data-sort="phone">Business Phone</th>
                             <th data-sort="phone">Member Name</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="list form-check-all">
@@ -56,6 +57,12 @@
                                     <option value="1" {{ ($business->is_approved) == 1 ? 'selected' : '' }}>Approved</option>
                                     <option value="0" {{ ($business->is_approved) == 0 ? 'selected' : '' }}>Rejected</option>
                                   </select>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.business.edit',$business->id) }}" class="text-success "><i class="fa fa-edit">  </i> Edit</a>&nbsp;|&nbsp;
+                                    <button class="delete-business text-danger" data-id="{{ $business->id }}"
+                                      style="border: none; background-color: transparent;"><i
+                                          class="pointer-cursor fa fa-trash text-danger"> </i> Delete </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -92,7 +99,48 @@
 @endsection
 @section('scripts')
 <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+<script>
+var milliseconds = 3000;
 
+setTimeout(function () {
+    document.getElementById('my-app').remove();
+}, milliseconds);
+</script>
+<script>
+       $(document).ready(function() {
+                $('.delete-business').click(function() {
+                    var businessId = $(this).data('id');
+                    swal({
+                            title: "Are you sure?",
+                            text: "You want to delete this businesss?",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $.ajax({
+                                    url: "{{ route('admin.business.destroy', '') }}/" + businessId,
+                                    type: "DELETE",
+                                    data: {
+                                        _token: "{{ csrf_token() }}",
+                                    },
+                                    success: function(response) {
+                                        if (response.status == 'success') {
+                                            swal("Deleted!", response.message, "success");
+                                            $('.business-item-' + businessId).remove();
+                                        } else {
+                                            swal("Error!", response.message, "error");
+                                        }
+                                        window.location.reload();
+                                    }
+                                })
+
+                            }
+                        });
+                });
+            });
+</script>
     <script>
       $(document).on("change",".update-status", function () {
           var is_approved = $(this).val();
@@ -115,5 +163,7 @@
       $(document).ready( function () {
         $('#myTable').DataTable();
     } );
+ 
+
     </script>
 @endsection

@@ -23,7 +23,7 @@
     </div> 
       <hr>
 
-      <form action="{{ route('admin.business.store') }}" method="POST">
+      <form action="{{ route('admin.business.store') }}" method="POST" enctype="multipart/form-data">
 
           @csrf
 
@@ -66,7 +66,7 @@
                   </div>
           </div>
 
-          <div class="col-12 mb-4 mt-3">
+          <div class="col-6 mb-4 mt-3">
 
                 <label for="lastNameinput" class="form-label ml-5"style="margin-left:13px; margin-bottom:0px; font-size:15px;">Members</label>
                 <div class="input-field col s12">
@@ -81,7 +81,15 @@
             </div>
 
           </div>
+          <div class="col-6 mb-4 mt-3">
 
+              <label for="lastNameinput" class="form-label ml-5"style="margin-left:13px; margin-bottom:0px; font-size:15px;">Business Logo</label>
+              <div class="input-field col s12">
+
+               <input type="file" class="form-control" name="logo" >
+
+            </div>
+          </div>
 
               <div class="col-12">
 

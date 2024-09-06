@@ -29,8 +29,12 @@ class DonationController extends Controller
         $donation->amount = $request->amount;
         $donation->member_id = $request->member_id;
         $donation->save();
-        return redirect()->route('admin.donation.index')->with('success' , 'Donation Created Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+            return redirect()->route('admin.donation.index')->with('success' , 'Donation Created Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
 
     /**
@@ -62,8 +66,12 @@ class DonationController extends Controller
         $donation->amount = $request->amount;
         $donation->member_id = $request->member_id;
         $donation->update();
-        return redirect()->route('admin.donation.index')->with('success' , 'Donation Updated Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+            return redirect()->route('admin.donation.index')->with('success' , 'Donation Updated Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
 
     /**

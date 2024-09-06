@@ -9,7 +9,12 @@ class SupportApplication extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'member_id',
         'title',
         'description',
     ];
+    public function member()
+    {
+        return $this->belongsTo(User::class,'member_id','id');
+    }
 }

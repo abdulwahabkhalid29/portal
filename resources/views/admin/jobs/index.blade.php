@@ -4,7 +4,7 @@
 @endpush
 @section('content')
 @if(Session::has('success'))
-    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
+    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" id="my-app" style="float: right;" role="alert">
             <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
         {{Session::get('success')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -93,7 +93,14 @@
   {{-- <button type="button" data-toast data-toast-text="Business status updated !" data-toast-gravity="top" data-toast-position="right" data-toast-className="primary" data-toast-duration="3000" data-toast-close="close" data-toast-style="style" class="btn btn-light w-xs d-none update-msg">Default</button> --}}
 @endsection
 @push('scripts')
-<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>z
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+<script>
+var milliseconds = 3000;
+
+setTimeout(function () {
+    document.getElementById('my-app').remove();
+}, milliseconds);
+</script>
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable();

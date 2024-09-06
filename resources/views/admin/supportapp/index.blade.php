@@ -6,7 +6,7 @@
 @endpush
 @section('content')
 @if(Session::has('success'))
-    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" style="float: right;" role="alert">
+    <div class="alert alert-success alert-top-border alert-dismissible shadow fade show alert-dismissible" id="my-app" style="float: right;" role="alert">
             <i class="ri-check-double-line me-3 align-middle fs-16 text-success"></i>
         {{Session::get('success')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -37,6 +37,7 @@
                     <thead  style=" background-color:#45cb85;  color:white;">
                         <tr>
                             <th class="text-center">No.</th>
+                            <th data-sort="name">Member</th>
                             <th data-sort="name">Title</th>
                             <th data-sort="email">Description</th>
                             <th data-sort="phone">Action</th>
@@ -46,6 +47,7 @@
                         @foreach ($support_applications as $index=>$support_application)
                             <tr>
                                 <td class="text-center">{{ ++$index}}</td>
+                                <td>{{ $support_application->member->name }}</td>
                                 <td >{{ $support_application->title }}</td>
                                 <td class="mt-5">{{ $support_application->description }}</td>
                                 <td class="mt-5">
@@ -89,6 +91,13 @@
 @endsection
 @push('scripts')
 <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+<script>
+var milliseconds = 3000;
+
+setTimeout(function () {
+    document.getElementById('my-app').remove();
+}, milliseconds);
+</script>
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable();

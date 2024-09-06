@@ -10,7 +10,7 @@ class Business extends Model
     use HasFactory;
     protected $table = 'businesses';
 
-    protected $fillable = ['member_id','name','email','address','introduction','phone_number','website','fb_link','insta_link','linkedin_link'];
+    protected $fillable = ['member_id','name','email','address','introduction','phone_number','logo','website','fb_link','insta_link','linkedin_link'];
     
     public function member()
     {

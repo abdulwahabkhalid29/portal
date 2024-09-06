@@ -38,8 +38,12 @@ class FeesController extends Controller
             $fee->image = $imageName;
         }
         $fee->save();
-        return redirect()->route('admin.fees.index')->with('success' , 'Fees Created Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+            return redirect()->route('admin.fees.index')->with('success' , 'Fees Created Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
     public function edit($id)
     {
@@ -56,9 +60,12 @@ class FeesController extends Controller
         $fee->fees = $request->fees;
         $fee->start_date = $request->start_date;
         $fee->end_date = $request->end_date;
-        $fee->update();
-        return redirect()->route('admin.fees.index')->with('success' , 'Fees Updated Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+            return redirect()->route('admin.fees.index')->with('success' , 'Fees Updated Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
 
     /**

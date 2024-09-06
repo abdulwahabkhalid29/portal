@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('support_applications', function (Blueprint $table) {
             $table->id();
+            $table->string('member_id')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();

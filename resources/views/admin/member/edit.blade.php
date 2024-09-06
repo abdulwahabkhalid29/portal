@@ -51,6 +51,18 @@
                         </div>
 
                     </div><!--end col-->
+                    
+                    <div class="col-6">
+
+                        <div class="mb-3">
+
+                            <label for="lastNameinput" class="form-label">Husband Name</label>
+
+                            <input type="text" class="form-control" placeholder="Enter your Husband Name" name="husband_name" value="{{ $user->husband_name }}" id="lastNameinput">
+
+                        </div>
+
+                    </div><!--end col-->
 
                     <div class="col-6">
 
@@ -94,7 +106,9 @@
 
                         <select class="form-select" name="gender" data-choices="" data-choices-sorting="true" id="specificSizeSelect">
 
-                            <option selected>{{ $user->gender }}</option>
+                            <option selected>Male</option>
+
+                            <option value="Female">Female</option>
 
                         </select>
 
@@ -124,7 +138,7 @@
 
                     </div><!--end col-->
 
-                    <div class="col-12">
+                    <div class="col-6">
 
                         <div class="mb-3">
 

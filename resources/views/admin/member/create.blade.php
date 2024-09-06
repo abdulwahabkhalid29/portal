@@ -49,6 +49,18 @@
                         </div>
 
                     </div><!--end col-->
+                    
+                    <div class="col-6">
+
+                        <div class="mb-3">
+
+                            <label for="lastNameinput" class="form-label">Husband Name</label>
+
+                            <input type="text" class="form-control" placeholder="Enter your Husband Name" name="husband_name" id="lastNameinput">
+
+                        </div>
+
+                    </div><!--end col-->
 
                     <div class="col-6">
 
@@ -112,18 +124,20 @@
 
                     <div class="col-6">
 
-                        <label class="" for="specificSizeSelect">Gender</label>
+                        <label class="" for="specificSizeSelect" id="gridCheck">Gender</label>
 
                         <select class="form-select" name="gender" data-choices="" data-choices-sorting="true" id="specificSizeSelect">
 
                             <option selected="">Choose...</option>
 
-                            <option value="Male">Male</option>
+                            <option value="Male" id="gridCheck">Male</option>
 
-                            <option value="Female">Female</option>
+                            <option value="Female" id="gridCheck2">Female</option>
 
                         </select>
 
+                    </div>
+                    <div class="form-check mx-2" id="inp2">
                     </div>
 
                     <div class="col-6">
@@ -150,11 +164,11 @@
 
                     </div><!--end col-->
 
-                    <div class="col-12">
+                    <div class="col-6">
 
                         <div class="mb-3">
 
-                            <label for="compnayNameinput" class="form-label">Address</label>
+                            <label for="compnayNameinput" class="form-label">Complete Address</label>
 
                             <input type="text" class="form-control" name="address" placeholder="Enter Complete Address" id="compnayNameinput">
 
@@ -532,7 +546,23 @@
 @endsection
 
 @section('scripts')
+<script>
+$(document).ready(function(){
+$("#gridCheck2").click(function(){
+    $('#inp2').html('<div class="row">'+
+                '<div class="col-md-12">'+
+                    '<div class="input-field">'+
+                        '<input type="text" class="form-control" name="husband_name" placeholder="Husband Name">'+
+                    '</div>'+
+                '</div>'+
+                    '</div>');
+    $('#inp').html('');
 
+  });
+  $("#gridCheck").click(function(){
+  });
+});
+</script>
     <script>
 
         $(document).on("click","#add_number", function () {

@@ -11,6 +11,7 @@ use App\Models\Dependent;
 use App\Models\User;
 use App\Models\Business;
 use App\Models\JobSeeker;
+use App\Models\supportApplication;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Storage;
 use Auth;
@@ -50,6 +51,7 @@ class MemberController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->father_name = $request->father_name;
+        $user->husband_name = $request->husband_name;
         $user->cnic_number = $request->cnic_number;
         $user->father_cnic = $request->father_cnic;
         $user->dob = $request->dob;
@@ -118,9 +120,14 @@ class MemberController extends Controller
             $dependent->parent_id = $user->id;
             $dependent->save();
         }
-
-        return redirect()->route('member.index')->with('success' , 'Member Created Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+             return redirect()->route('member.index')->with('success' , 'Member Created Successfully!');
+         } catch (\Throwable $th) {
+             return redirect()->back()->with('error' , 'Something went wrong');
+                throw $th;
+        }
+        // return redirect()->route('member.index')->with('success' , 'Member Created Successfully!');
+        // return redirect()->back()->with('error' , 'Something went wrong');
 
     }
 
@@ -132,11 +139,12 @@ class MemberController extends Controller
         $user = User::find($id);
         $member_information = Membership::where('member_id',$user->id)->get();
         $jobs = JobSeeker::where('member_id',$user->id)->get();
+        $support_applications = SupportApplication::where('member_id',$user->id)->get();
         $businesses = Business::where('member_id',$user->id)->get();
         $mobile_numbers = MemberPhone::where('member_id',$user->id)->where('type','Mobile')->get();
         $telephone_numbers = MemberPhone::where('member_id',$user->id)->where('type','Telephone')->get();
         $dependents = Dependent::where('parent_id',$user->id)->get();
-        return view('admin.member.show',compact('user','member_information','mobile_numbers','telephone_numbers','dependents','jobs','businesses'));
+        return view('admin.member.show',compact('user','member_information','mobile_numbers','telephone_numbers','support_applications','dependents','jobs','businesses'));
     }
 
     /**
@@ -161,21 +169,31 @@ class MemberController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->father_name = $request->father_name;
+        $user->password = Hash::make($request->password);
+        $user->husband_name = $request->husband_name;
         $user->cnic_number = $request->cnic_number;
         $user->father_cnic = $request->father_cnic;
         $user->gender = $request->gender;
         $user->dob = $request->dob;
+        $user->area = $request->area;
+        $user->city = $request->city;
+        $user->country = $request->country;
         $user->address = $request->address;
         $user->qualification = $request->qualification;
         $user->occupation = $request->occupation;
         $user->verified_by = $request->verified_by;
         $user->received_by = $request->received_by;
         $user->received_at = $request->received_at;
+        $user->created_by = Auth::user()->id;
         $user->baradari_member = $request->baradari_member;
         $user->membership_number = $request->membership_number;
         $user->update();
-        return redirect()->route('member.index')->with('success' , 'Member Updated Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+            return redirect()->route('member.index')->with('success' , 'Member Updated Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
 
     /**

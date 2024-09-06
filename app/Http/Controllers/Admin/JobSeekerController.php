@@ -48,8 +48,12 @@ class JobSeekerController extends Controller
         $seeker->city = $request->city;
         $seeker->member_id = $request->member_id;
         $seeker->save();
-        return redirect()->route('admin.job-seeker.index')->with('success' , 'Job Seeker Created Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+    try {
+            return redirect()->route('admin.job-seeker.index')->with('success' , 'Job Seeker Created Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
 
     /**
@@ -94,8 +98,12 @@ class JobSeekerController extends Controller
         $seeker->city = $request->city;
         $seeker->member_id = $request->member_id;
         $seeker->update();
-        return redirect()->route('admin.job-seeker.index')->with('success' , 'Job Seeker Updated Successfully!');
-        return redirect()->back()->with('error' , 'Something went wrong');
+        try {
+            return redirect()->route('admin.job-seeker.index')->with('success' , 'Job Seeker Updated Successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
 
     /**

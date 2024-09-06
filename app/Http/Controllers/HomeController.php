@@ -36,4 +36,8 @@ class HomeController extends Controller
         $data['totalFess'] = Membership::where('end_date', '<', date('Y-m-d'))->count();
         return view('home',$data);  
     }
+    public function expired(){
+        $fees = Membership::get();
+        return view('expired',compact('fees'));
+    }
 }
