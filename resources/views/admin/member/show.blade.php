@@ -10,16 +10,16 @@
             </div>
             <div class="pt-4 mb-4 mb-lg-3 pb-lg-4 profile-wrapper">
                 <div class="row g-4">
-                    <div class="col-auto">
+                    {{-- <div class="col-auto">
                         <div class="avatar-lg">
                             <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="user-img" class="img-thumbnail rounded-circle">
                         </div>
-                    </div>
+                    </div> --}}
                     <!--end col-->
                     <div class="col">
                         <div class="p-2">
                             <h3 class="text-white mb-1">{{ $user->name }}</h3>
-                            <p class="text-white text-opacity-75">Son Of : {{ $user->father_name }}</p>
+                            <p class="text-white text-opacity-75">S/O {{ $user->father_name }}</p>
                             <div class="hstack text-white-50 gap-1">
                             </div>
                         </div>

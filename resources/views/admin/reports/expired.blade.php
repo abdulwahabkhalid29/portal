@@ -11,7 +11,7 @@
                 <h2 class="">Expired Fees</h2>
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6">  
                 <div class="row g-4 " style="float: right">
                     <div class="col-sm-auto">
                         {{-- <div>
