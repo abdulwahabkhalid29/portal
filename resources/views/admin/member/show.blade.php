@@ -172,16 +172,22 @@
                                                                     <p>{{$user->email}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
+                                                                    <p><b>CNIC NO :</b></p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->cnic_number}}</p>
+                                                                </div>
+                                                                <div class="col-md-3">
                                                                     <p><b>Father CNIC NO :</b></p>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <p>{{$user->father_cnic}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <p><b>CNIC NO :</b></p>
+                                                                    <p><b>Date Of Birth :</b></p>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <p>{{$user->cnic_number}}</p>
+                                                                    <p>{{ date('d M Y' , strtotime( $user->dob ))}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <p><b>Gender :</b></p>
@@ -196,28 +202,22 @@
                                                                     <p>{{$user->qualification}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
+                                                                    <p><b>Occupation :</b></p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p>{{$user->occupation}}</p>
+                                                                </div>
+                                                                <div class="col-md-3">
                                                                     <p><b>City :</b></p>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <p>{{$user->city}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <p><b>Date Of Birth :</b></p>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <p>{{ date('d M Y' , strtotime( $user->dob ))}}</p>
-                                                                </div>
-                                                                <div class="col-md-3">
                                                                     <p><b>Location :</b></p>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-9">
                                                                     <p>{{$user->address}}</p>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <p><b>Occupation :</b></p>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <p>{{$user->occupation}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <p><b>Area :</b></p>
@@ -232,7 +232,24 @@
                                                                     <p>{{$user->country}}</p>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <p><b>From Received By :</b></p>
+                                                                    <p><b>Telephone Number :</b></p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    @foreach ($telephone_numbers as $number)
+                                                                        <p>{{ $number->phone_number }}</p>
+                                                                    @endforeach
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <p><b>Mobile Number :</b></p>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    @foreach ($mobile_numbers as $number)
+                                                                        <p>{{ $number->phone_number }}</p>
+                                                                    @endforeach
+                                                                </div>
+                                                                <hr class="mt-3 mb-3">
+                                                                <div class="col-md-3">
+                                                                    <p><b>Received By :</b></p>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <p>{{$user->received_by}}</p>
@@ -255,22 +272,7 @@
                                                                 <div class="col-md-3">
                                                                     <p>{{$user->baradari_member}}</p>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <p><b>Telephone Number :</b></p>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    @foreach ($telephone_numbers as $number)
-                                                                        <p>{{ $number->phone_number }}</p>
-                                                                    @endforeach
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <p><b>Mobile Number :</b></p>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    @foreach ($mobile_numbers as $number)
-                                                                        <p>{{ $number->phone_number }}</p>
-                                                                    @endforeach
-                                                                </div>
+                                                                
                                                             </div>
                                                             </tbody>
                                                         </table>

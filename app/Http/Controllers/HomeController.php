@@ -34,10 +34,15 @@ class HomeController extends Controller
         $data['totalMembership'] = User::count();
         $data['totalJobSeeker'] = JobSeeker::count();
         $data['totalFess'] = Membership::where('end_date', '<', date('Y-m-d'))->count();
+        $data['totalfees'] = Membership::where('end_date', '>', date('Y-m-d'))->count();
         return view('home',$data);  
     }
     public function expired(){
-        $fees = Membership::get();
-        return view('expired',compact('fees'));
+        $fees = Membership::where('end_date', '<', date('Y-m-d'))->get();
+        return view('admin.reports.expired',compact('fees'));
+    }
+    public function expiringsoon(){
+        $fees = Membership::where('end_date', '>', date('Y-m-d'))->get();
+        return view('admin.reports.expiring_soon',compact('fees'));
     }
 }

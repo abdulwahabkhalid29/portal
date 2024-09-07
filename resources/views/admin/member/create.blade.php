@@ -49,18 +49,6 @@
                         </div>
 
                     </div><!--end col-->
-                    
-                    <div class="col-6">
-
-                        <div class="mb-3">
-
-                            <label for="lastNameinput" class="form-label">Husband Name</label>
-
-                            <input type="text" class="form-control" placeholder="Enter your Husband Name" name="husband_name" id="lastNameinput">
-
-                        </div>
-
-                    </div><!--end col-->
 
                     <div class="col-6">
 
@@ -124,9 +112,9 @@
 
                     <div class="col-6">
 
-                        <label class="" for="specificSizeSelect" id="gridCheck">Gender</label>
+                        <label class="" for="specificSizeSelect" id="gridCheck2">Gender</label>
 
-                        <select class="form-select" name="gender" data-choices="" data-choices-sorting="true" id="specificSizeSelect">
+                        <select class="form-select" name="gender" data-choices="" data-choices-sorting="true" id="gridCheck2">
 
                             <option selected="">Choose...</option>
 
@@ -136,8 +124,8 @@
 
                         </select>
 
-                    </div>
-                    <div class="form-check mx-2" id="inp2">
+                        <div class="form-check mx-2" id="inp2">
+                        </div>
                     </div>
 
                     <div class="col-6">
@@ -164,7 +152,7 @@
 
                     </div><!--end col-->
 
-                    <div class="col-6">
+                    <div class="col-12">
 
                         <div class="mb-3">
 
@@ -556,8 +544,6 @@ $("#gridCheck2").click(function(){
                     '</div>'+
                 '</div>'+
                     '</div>');
-    $('#inp').html('');
-
   });
   $("#gridCheck").click(function(){
   });

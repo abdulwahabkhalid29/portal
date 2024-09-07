@@ -187,6 +187,10 @@ class MemberController extends Controller
         $user->created_by = Auth::user()->id;
         $user->baradari_member = $request->baradari_member;
         $user->membership_number = $request->membership_number;
+        $url='https://portal.baws.org.pk/member/'.$request->membership_number;
+        $qrCode = QrCode::format('png')->size(1023)->generate($url);
+        $file = 'public/QrCodes/' . $request->membership_number . '.png';
+        Storage::disk('local')->put($file, $qrCode);
         $user->update();
         try {
             return redirect()->route('member.index')->with('success' , 'Member Updated Successfully!');

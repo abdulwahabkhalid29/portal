@@ -1718,13 +1718,15 @@
                                     <div class="flex-grow-1 overflow-hidden">
                                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Total Member</p>
                                     </div>
-                                    <div class="flex-shrink-0">
-                                        <h5 class="text-success fs-14 mb-0">
-                                            {{-- <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +16.24 % --}}
-                                        </h5>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <a href="{{route("member.create")}}">
+                                         <span class="btn btn-soft-success btn-sm rounded fs-4 w-100">
+                                             <i class="ri-add-line align-bottom"></i>
+                                         </span>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                <div class="d-flex align-items-end justify-content-between">
                                     <div>
                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalMembership }}"></span> </h4>
                                         <a href="{{url('member')}}" class="text-decoration-underline">View Memberships</a>
@@ -1747,20 +1749,48 @@
                                     <div class="flex-grow-1 overflow-hidden">
                                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Over Due fees</p>
                                     </div>
-                                    <div class="flex-shrink-0">
-                                        <h5 class="text-danger fs-14 mb-0">
-                                        <a href="{{route('expired')}}" class="text-decoration-underline">Report</a>
-                                        {{-- <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 % --}}
-                                        </h5>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <a href="{{route('admin.fees.create')}}">
+                                         <span class="btn btn-soft-success btn-sm rounded fs-4 w-100">
+                                             <i class="ri-add-line align-bottom"></i>
+                                         </span>
+                                        </a>
+                                     </div>
+                                </div>
+                                <div class="d-flex align-items-end justify-content-between">
+                                    <div>
+                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalFess }}"></span></h4>
+                                        <a href="{{route('expired')}}" class="text-decoration-underline">View Fees Report</a>
+                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <span class="avatar-title bg-info rounded fs-3">
+                                            <i class="bx bx-dollar-circle"></i>
+                                        </span>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end justify-content-between mt-4">
+                            </div><!-- end card body -->
+                        </div><!-- end card -->
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <!-- card -->
+                        <div class="card card-animate">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Expiring Soon Fees</p>
+                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <a href="{{route('admin.fees.create')}}">
+                                         <span class="btn btn-soft-success btn-sm rounded fs-4 w-100">
+                                             <i class="ri-add-line align-bottom"></i>
+                                         </span>
+                                        </a>
+                                     </div>
+                                </div>
+                                <div class="d-flex align-items-end justify-content-between">
                                     <div>
-                                        {{-- @foreach ($fees as $fee) --}}
-                                        {{-- {!! ($fee->end_date) > date('Y-m-d') ? '' : '' !!} --}}
-                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalFess }}"></span></h4>
-                                        {{-- @endforeach --}}
-                                        <a href="{{route('admin.fees.index')}}" class="text-decoration-underline">View Fees History</a>
+                                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalfees }}"></span></h4>
+                                        <a href="{{route('expiringsoon')}}" class="text-decoration-underline">View Fees Report</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
                                         <span class="avatar-title bg-info rounded fs-3">
@@ -1781,16 +1811,18 @@
                                     <div class="flex-grow-1 overflow-hidden">
                                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Businesses</p>
                                     </div>
-                                    <div class="flex-shrink-0">
-                                        <h5 class="text-success fs-14 mb-0">
-                                            {{-- <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 % --}}
-                                        </h5>
-                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <a href="{{route('admin.business.create')}}">
+                                         <span class="btn btn-soft-success btn-sm rounded fs-4 w-100">
+                                             <i class="ri-add-line align-bottom"></i>
+                                         </span>
+                                        </a>
+                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                <div class="d-flex align-items-end justify-content-between">
                                     <div>
                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalBusiness }}"></span> </h4>
-                                        <a href="{{ route('admin.business.index') }}" class="text-decoration-underline">See details</a>
+                                        <a href="{{ route('admin.business.index') }}" class="text-decoration-underline">View Businesses</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
                                         <span class="avatar-title bg-warning rounded fs-3">
@@ -1801,7 +1833,7 @@
                             </div><!-- end card body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
-                    <div class="col-xl-6 col-md-6">
+                    <div class="col-xl-4 col-md-6">
                         <!-- card -->
                         <div class="card card-animate">
                             <div class="card-body">
@@ -1809,18 +1841,17 @@
                                     <div class="flex-grow-1 overflow-hidden">
                                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Job Seekers</p>
                                     </div>
-                                    <div class="flex-shrink-0">
-                                        <h5 class="text-danger fs-14 mb-0">
-                                            {{-- <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 % --}}
-                                        </h5>
+                                    <div class="avatar-sm flex-shrink-0">
+                                       <a href="{{route('admin.job-seeker.create')}}">
+                                        <span class="btn btn-soft-success btn-sm rounded fs-4 w-100">
+                                            <i class="ri-add-line align-bottom"></i>
+                                        </span>
+                                       </a>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                <div class="d-flex align-items-end justify-content-between">
                                     <div>
-                                        {{-- @foreach ($fees as $fee) --}}
-                                        {{-- {!! ($fee->end_date) > date('Y-m-d') ? '' : '' !!} --}}
                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalJobSeeker }}"></span></h4>
-                                        {{-- @endforeach --}}
                                         <a href="{{route('admin.job-seeker.index')}}" class="text-decoration-underline">View Job Seekers</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -1832,7 +1863,7 @@
                             </div><!-- end card body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
-                    <div class="col-xl-6 col-md-6">
+                    <div class="col-xl-4 col-md-6">
                         <!-- card -->
                         <div class="card card-animate">
                             <div class="card-body">
@@ -1840,13 +1871,15 @@
                                     <div class="flex-grow-1 overflow-hidden">
                                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Total Jobs</p>
                                     </div>
-                                    <div class="flex-shrink-0">
-                                        <h5 class="text-muted fs-14 mb-0">
-                                            {{-- +0.00 % --}}
-                                        </h5>
-                                    </div>
+                                    <div class="avatar-sm flex-shrink-0">
+                                        <a href="{{route('admin.job.create')}}">
+                                         <span class="btn btn-soft-success btn-sm rounded fs-4 w-100">
+                                             <i class="ri-add-line align-bottom"></i>
+                                         </span>
+                                        </a>
+                                     </div>
                                 </div>
-                                <div class="d-flex align-items-end justify-content-between mt-4">
+                                <div class="d-flex align-items-end justify-content-between">
                                     <div>
                                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{ $totalJob }}"></span> </h4>
                                         <a href="{{ route('admin.job.index') }}" class="text-decoration-underline">View Jobs</a>
