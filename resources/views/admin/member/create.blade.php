@@ -108,26 +108,27 @@
 
                         </div>
 
-                    </div><!--end col-->
-
-                    <div class="col-6">
-
-                        <label class="" for="specificSizeSelect" id="gridCheck2">Gender</label>
-
-                        <select class="form-select" name="gender" data-choices="" data-choices-sorting="true" id="gridCheck2">
-
-                            <option selected="">Choose...</option>
-
-                            <option value="Male" id="gridCheck">Male</option>
-
-                            <option value="Female" id="gridCheck2">Female</option>
-
-                        </select>
-
-                        <div class="form-check mx-2" id="inp2">
+                    </div>
+                <div class="col-md-6">
+                    <lable class="form-check-label mb-4">Gander </lable>
+                    <div class="col-6 d-flex ">
+                        <div class="form-check mx-2 ml-5">
+                            <input class="form-check-input" name="gender" value="male" type="radio" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Male
+                            </label>
+                            
+                        </div>
+                        <div class="form-check mx-2 ml-5">
+                            <input class="form-check-input" name="gender" value="female" type="radio" id="gridCheck2">
+                            <label class="form-check-label" for="gridCheck2">
+                                Female
+                            </label>
+                            <div id="inp2">
+                            </div>
                         </div>
                     </div>
-
+                </div>
                     <div class="col-6">
 
                         <div class="mb-3">
@@ -536,18 +537,19 @@
 @section('scripts')
 <script>
 $(document).ready(function(){
-$("#gridCheck2").click(function(){
-    $('#inp2').html('<div class="row">'+
-                '<div class="col-md-12">'+
-                    '<div class="input-field">'+
-                        '<input type="text" class="form-control" name="husband_name" placeholder="Husband Name">'+
+      $("#gridCheck2").click(function(){
+        $('#inp2').html('<div class="row">'+
+                    '<div class="ml-5">'+
+                        '<div class="input-field">'+
+                            '<input type="text" class="form-control" name="husband_name" placeholder="Your Husband Name">'+
+                        '</div>'+
                     '</div>'+
-                '</div>'+
-                    '</div>');
-  });
-  $("#gridCheck").click(function(){
-  });
-});
+                        '</div>');    
+      });
+      $("#gridCheck").click(function(){
+        $('#inp2').html('');
+      });
+    });
 </script>
     <script>
 

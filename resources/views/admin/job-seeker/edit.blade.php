@@ -70,6 +70,7 @@
             <div class="col-6 mt-3">
               <label for="" class="form-label">Upload CV or Resume</label>
               <input type="file" name="resume" class="form-control" style="padding: 13px">
+              <img src="{{asset('job-seeker-resume/'.$seeker->resume)}}" alt="" width="150px" class="img-thumbnail mt-3">
             </div>
           <div class="col-6 mt-3">
             <div class="mb-3">

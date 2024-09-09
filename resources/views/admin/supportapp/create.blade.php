@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-                       <form action="{{ route('admin.supportapplication.store') }}" method="POST" enctype="multipart/form-data" class="my-form">
+            <form action="{{ route('admin.supportapplication.store') }}" method="POST" enctype="multipart/form-data" class="my-form">
                 @csrf
                 @method('POST')
                 <div class="row">
@@ -90,7 +90,7 @@
                     {{-- <small id="image" class="text-danger">@error ('images[]') {{ $message }} @enderror</small> --}}
                 </div>
                     {{-- <input type="file" name="image[]" id=""  multiple > --}}
-            {{-- <input type="file" class="filepond" id="filepond" name="image[]" multiple data-max-file-size="3MB" data-max-files="3"/> --}}
+                {{-- <input type="file" class="filepond" id="filepond" name="image[]" multiple data-max-file-size="3MB" data-max-files="3"/> --}}
                 <div class="text-end">
                     <button type="submit" class="btn text-light btn-lg" style="background-color: #45cb85">Submit</button>
                 </div>
