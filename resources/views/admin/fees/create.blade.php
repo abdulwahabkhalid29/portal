@@ -18,19 +18,20 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <form action="{{ route('admin.fees.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="row">
                     <div class="col-12">
+                        <input type="hidden" name="create" value="create">
                         <div class="input-field">
                             <label for="" class="form-label text-body">Amount Of Fees</label>
                             <input type="number" class="form-control" name="fees" required>
                         </div>
                     </div>
 
-                    
+
 
                     <p class="mt-3"><b>Payment Mode </b></p>
                     <div class="col-6 d-flex mb-5">
@@ -39,7 +40,7 @@
                             <label class="form-check-label" for="gridCheck">
                                 Cash
                             </label>
-                            
+
                         </div>
                         <div class="form-check mx-2 ml-5">
                             <input class="form-check-input" name="payment_type" value="Online Transfer" type="radio" id="gridCheck2">
@@ -110,7 +111,7 @@
                     '</div>'+
                         '</div>');
         $('#inp3').html('');
-    
+
       });
       $("#gridCheck3").click(function(){
           $('#inp3').html('<div class="col-md-12">'+
@@ -126,5 +127,5 @@
       });
     });
     </script>
-    
+
 @endpush

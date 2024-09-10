@@ -47,12 +47,16 @@ class SupportApplicationController extends Controller
                 $isFirstImage = false;
             }
         }
-
-        if(!empty($store->id)){
-            return redirect()->route('admin.supportapplication.index')->with('success' , 'Support Application Created Successfully!');
-        }else{
-            return redirect()->back()->with('error' , 'Something went wrong');
-        }
+        try {
+            if ($request->has('create') && $request->create == 'create') {
+                return redirect()->route('admin.supportapplication.index')->with('success' , 'Support Application Created Successfully!');
+            } else {
+                return redirect()->back()->with('success', 'Support Application Created Successfully!');
+            }
+            } catch (\Throwable $th) {
+                return redirect()->back()->with('error' , 'Something went wrong');
+                   throw $th;
+           }
     }
         public function multiStoreProduct(Request $request){
         $request->validate([

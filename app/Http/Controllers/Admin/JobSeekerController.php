@@ -49,7 +49,11 @@ class JobSeekerController extends Controller
         $seeker->member_id = $request->member_id;
         $seeker->save();
     try {
-            return redirect()->route('admin.job-seeker.index')->with('success' , 'Job Seeker Created Successfully!');
+        if ($request->has('create') && $request->create == 'create') {
+            return redirect()->route('admin.job-seeker.index')->with('success', 'Job Seeker Created Successfully!');
+        } else {
+            return redirect()->back()->with('success', 'Job Seeker Created Successfully!');
+        }
         } catch (\Throwable $th) {
             return redirect()->back()->with('error' , 'Something went wrong');
                throw $th;

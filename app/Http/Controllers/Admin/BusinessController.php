@@ -34,7 +34,7 @@ class BusinessController extends Controller
             'fb_link' => 'required',
             'insta_link' => 'required',
             'linkedin_link' => 'required',
-            'logo' => 'required',
+            // 'logo' => 'required',
         ]);
         if($request->file('logo')){
             $image = $request->file('logo');
@@ -53,13 +53,20 @@ class BusinessController extends Controller
         'fb_link' => $request->fb_link,
         'insta_link' => $request->address,
         'linkedin_link' => $request->linkedin_link,
-        'logo' => $imageName,
+        // 'logo' => $imageName,
     ]);
-    if(!empty($store->id)){
-        return redirect()->route('admin.business.index')->with('success' , 'Business Created Successfully!');
+    try {
+        if ($request->has('create') && $request->create == 'create') {
+            return redirect()->route('admin.business.index')->with('success' , 'Business Created Successfully!');
+        } else {
+            return redirect()->back()->with('success', 'Business Created Successfully!');
+        }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error' , 'Something went wrong');
+               throw $th;
+       }
     }
-    return redirect()->back()->with('error' , 'Something went wrong');
-    }
+
     public function edit($id)
     {
         $business = Business::find($id);

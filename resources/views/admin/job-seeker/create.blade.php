@@ -19,11 +19,12 @@
           </div>
       </div>
   </div>
-      <form action="{{ route('admin.job-seeker.store') }}" method="POST" enctype="multipart/form-data"> 
+      <form action="{{ route('admin.job-seeker.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('POST')
           <div class="row">
               <div class="col-4">
+                <input type="hidden" name="create" value="create">
                 <div class="input-field">
                   <label for="" class="form-label">Job Title</label>
                   <input type="text" class="form-control" name="title"  required>
@@ -42,7 +43,7 @@
                   <input type="text" name="industry" class="form-control" >
                 </div>
               </div>
-              
+
 
               <div class="col-4 mt-3">
                   <div class="input-field">
@@ -51,14 +52,14 @@
                   </div>
               </div>
 
-              
+
               <div class="col-4 mt-3">
                 <div class="input-field">
                   <label for="" class="form-label">City</label>
                   <input type="text" class="form-control" name="city" required>
                 </div>
               </div>
-              
+
               <div class="col-4 ">
                 <div class="input-field">
                   <label for="firstNameinput" class="form-label">Skills</label>
@@ -66,13 +67,13 @@
                     <input type="text" name="skills" class="form-control">
                 </div>
             </div>
-              
-            
+
+
             <div class="col-6 mt-3">
               <label for="" class="form-label">Upload CV or Resume</label>
               <input type="file" name="resume" class="form-control" style="padding: 13px" >
             </div>
-            
+
             <div class="col-6 mt-3">
               <div class="mb-3">
                   <label for="lastNameinput" class="form-label">Members</label>
@@ -82,7 +83,7 @@
                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                     @endforeach
                   </select>
-              </div>    
+              </div>
             </div><!--end col-->
 
           </div>

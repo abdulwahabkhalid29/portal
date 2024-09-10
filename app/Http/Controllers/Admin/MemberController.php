@@ -137,6 +137,7 @@ class MemberController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
+        $users = User::where('role_as','member')->get();
         $member_information = Membership::where('member_id',$user->id)->get();
         $jobs = JobSeeker::where('member_id',$user->id)->get();
         $support_applications = SupportApplication::where('member_id',$user->id)->get();
@@ -144,7 +145,7 @@ class MemberController extends Controller
         $mobile_numbers = MemberPhone::where('member_id',$user->id)->where('type','Mobile')->get();
         $telephone_numbers = MemberPhone::where('member_id',$user->id)->where('type','Telephone')->get();
         $dependents = Dependent::where('parent_id',$user->id)->get();
-        return view('admin.member.show',compact('user','member_information','mobile_numbers','telephone_numbers','support_applications','dependents','jobs','businesses'));
+        return view('admin.member.show',compact('user','member_information','users','mobile_numbers','telephone_numbers','support_applications','dependents','jobs','businesses'));
     }
 
     /**

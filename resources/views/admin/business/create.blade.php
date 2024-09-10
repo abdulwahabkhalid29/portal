@@ -5,7 +5,7 @@
 @section('content')
 <div class="card p-2">
     <div class="card-body">
-        
+
 
       <div class="row">
         <div class="col-md-6">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
       <hr>
 
       <form action="{{ route('admin.business.store') }}" method="POST" enctype="multipart/form-data">
@@ -30,13 +30,13 @@
           @method('POST')
 
           <div class="row">
-
+            <input type="hidden" name="create" value="create">
               <div class="col-6">
                     <div class="input-field col s12">
                       <label for="firstNameinput">Business Name</label>
                     <input name="name" type="text" class="validate" id="firstNameinput" value="" required>
-                    <span class="help-block" ng-show="errorFname"></span> 
-                    </div>  
+                    <span class="help-block" ng-show="errorFname"></span>
+                    </div>
               </div>
 
               <div class="col-6">
@@ -44,7 +44,7 @@
                 <div class="input-field col s12">
                     <label for="lastNameinput">Business Email</label>
                   <input type="email" name="email" class="validate" value="" id="lastNameinput" required>
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
               </div>
               <input type="hidden" name="member_id" value="{{ auth()->user()->id }}">
@@ -52,7 +52,7 @@
                 <div class="input-field col s12">
                     <label for="lastNameinput">Business Phone</label>
                   <input type="number" name="phone_number" class="validate" value="" id="lastNameinput">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
 
             </div>
@@ -62,7 +62,7 @@
                 <div class="input-field col s12">
                     <label for="lastNameinput">Business Website</label>
                   <input type="text" name="website" class="validate" value="" id="lastNameinput">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
           </div>
 
@@ -96,7 +96,7 @@
                 <div class="input-field col s12">
                     <label for="address1ControlTextarea">Business Introduction</label>
                   <input type="text" name="introduction" class="validate" value="" id="address1ControlTextarea">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
 
               </div>
@@ -106,7 +106,7 @@
                 <div class="input-field col s12">
                     <label for="address1ControlTextarea">Address</label>
                   <input type="text" name="address" class="validate" value="" id="address1ControlTextarea">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
             </div>
 
@@ -116,7 +116,7 @@
                 <div class="input-field col s12">
                     <label for="citynameInput">Facebook Link</label>
                   <input type="text" name="fb_link" class="validate" value="" id="citynameInput">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
               </div>
 
@@ -125,7 +125,7 @@
                 <div class="input-field col s12">
                     <label for="citynameInput">Instagram Link</label>
                   <input type="text" name="insta_link" class="validate" value="" id="citynameInput">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
             </div>
 
@@ -134,7 +134,7 @@
                 <div class="input-field col s12">
                     <label for="citynameInput">Linkedin Link</label>
                   <input type="text" name="linkedin_link" class="validate" value="" id="citynameInput">
-                  <span class="help-block" ng-show="errorFname"></span> 
+                  <span class="help-block" ng-show="errorFname"></span>
                   </div>
           </div>
 
@@ -161,7 +161,7 @@
 @endsection
 @push('scripts')
 
-  
+
   <script>
       $(document).ready(function () {
         $('.select2').select2();

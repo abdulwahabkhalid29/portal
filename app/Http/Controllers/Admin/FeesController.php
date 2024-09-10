@@ -38,8 +38,12 @@ class FeesController extends Controller
             $fee->image = $imageName;
         }
         $fee->save();
-        try {
+       try {
+        if ($request->has('create') && $request->create == 'create') {
             return redirect()->route('admin.fees.index')->with('success' , 'Fees Created Successfully!');
+        } else {
+            return redirect()->back()->with('success', 'Fees Created Successfully!');
+        }
         } catch (\Throwable $th) {
             return redirect()->back()->with('error' , 'Something went wrong');
                throw $th;

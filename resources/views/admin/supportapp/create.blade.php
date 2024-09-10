@@ -49,10 +49,11 @@
                     </div>
                 </div>
             </div>
-                       <form action="{{ route('admin.supportapplication.store') }}" method="POST" enctype="multipart/form-data" class="my-form">
+            <form action="{{ route('admin.supportapplication.store') }}" method="POST" enctype="multipart/form-data" class="my-form">
                 @csrf
                 @method('POST')
                 <div class="row">
+                    <input type="hidden" name="create" value="create">
                     <div class="col-6 mt-3">
                         <div class="input-field col s12">
                             <label for="firstNameinput" class="form-label">Title</label>
@@ -68,7 +69,7 @@
                                   <option value="{{ $user->id }}">{{ $user->name }}</option>
                               @endforeach
                             </select>
-                        </div>    
+                        </div>
                       </div>
                     <div class="col-12 mt-3">
                         <div class="mb-3">
@@ -90,7 +91,7 @@
                     {{-- <small id="image" class="text-danger">@error ('images[]') {{ $message }} @enderror</small> --}}
                 </div>
                     {{-- <input type="file" name="image[]" id=""  multiple > --}}
-            {{-- <input type="file" class="filepond" id="filepond" name="image[]" multiple data-max-file-size="3MB" data-max-files="3"/> --}}
+                {{-- <input type="file" class="filepond" id="filepond" name="image[]" multiple data-max-file-size="3MB" data-max-files="3"/> --}}
                 <div class="text-end">
                     <button type="submit" class="btn text-light btn-lg" style="background-color: #45cb85">Submit</button>
                 </div>

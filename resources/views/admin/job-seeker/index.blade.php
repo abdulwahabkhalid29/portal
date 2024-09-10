@@ -97,7 +97,7 @@
 @push('scripts')
 <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
 <script>
-var milliseconds = 3000;
+var milliseconds = 2000;
 
 setTimeout(function () {
     document.getElementById('my-app').remove();
