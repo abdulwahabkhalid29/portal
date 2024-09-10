@@ -312,7 +312,6 @@
                                                                     <input type="text" class="form-control" name="title"  required>
                                                                   </div>
                                                                 </div>
-
                                                                 <div class="col-4">
                                                                   <div class="input-field">
                                                                     <label for="" class="form-label">Qualification</label>
@@ -341,7 +340,6 @@
                                                                     <input type="text" class="form-control" name="city" required>
                                                                   </div>
                                                                 </div>
-
                                                                 <div class="col-4 mt-3">
                                                                   <div class="input-field">
                                                                     <label for="firstNameinput" class="form-label">Skills</label>
@@ -361,7 +359,6 @@
                                                             </div>
                                                         </form>
                                                     </div>
-
                                                 </div>
                                                 </div>
                                                 <div>
@@ -623,7 +620,11 @@
                                                                 </div>
                                                             </form>
                                                         </div>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> c4c39ded29f7c8262394a1c87371c2cc68a08bf0
                                                     </div>
                                                 </div>
                                                 <div>
@@ -833,7 +834,6 @@
                                                                         <label class="form-check-label" for="gridCheck">
                                                                             Cash
                                                                         </label>
-
                                                                     </div>
                                                                     <div class="form-check mx-2 ml-5">
                                                                         <input class="form-check-input" name="payment_type" value="Online Transfer" type="radio" id="gridCheck2">
@@ -858,21 +858,18 @@
                                                                         <input type="date" class="form-control" placeholder="" name="start_date" id="lastNameinput" required>
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="col-6 ">
                                                                     <label for="firstNameinput" class="form-label text-body" style="font-size: 15px;"><b>End Date</b></label>
                                                                     <div class="input-field">
                                                                         <input type="date" class="form-control" name="end_date" placeholder="" id="firstNameinput" required>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                             <div class="text-end">
                                                                 <button type="submit" class="btn text-light mt-3" style="background-color: #45cb85">Submit</button>
                                                             </div>
                                                         </form>
                                                     </div>
-
                                                 </div>
                                                 <table class="table table-nowrap mb-0">
                                                     <thead class="table-light">
@@ -1101,7 +1098,6 @@ window.onclick = function(event) {
                     '</div>'+
                         '</div>');
         $('#inp3').html('');
-
       });
       $("#gridCheck3").click(function(){
           $('#inp3').html('<div class="col-md-12">'+
